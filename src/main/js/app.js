@@ -6,7 +6,7 @@ const ReactDOM = require('react-dom');
 function App(props) {
 	return (
 		<div> 
-			<p>Hello sb!</p>
+			<p>Hello world!</p>
 		</div>
 	);
 }
