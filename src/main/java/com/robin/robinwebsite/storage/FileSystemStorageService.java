@@ -28,6 +28,7 @@ public class FileSystemStorageService implements StorageService {
 		this.rootLocation = Paths.get(properties.getLocation());
 	}
 
+	// store a file with a given fid and return its path
 	@Override
 	public String store(String fid, MultipartFile file) {
 		try {
@@ -41,30 +42,30 @@ public class FileSystemStorageService implements StorageService {
 				Files.copy(inputStream, destinationFile,
 					StandardCopyOption.REPLACE_EXISTING);
 			}
-			
-			return this.rootLocation.resolve(fid).toString();
+			return rootLocation.resolve(fid).toString();
 		}
 		catch (IOException e) {
 			throw new StorageException("Failed to store file.", e);
 		}
 	}
 
+	// load a file with given path
 	@Override
-	public Resource load(String fid) {
+	public Resource load(String path) {
+		Path file = this.rootLocation.resolveSibling(path);
 		try {
-			Path file = this.rootLocation.resolve(fid);
 			Resource resource = new UrlResource(file.toUri());
 			if (resource.exists() || resource.isReadable()) {
 				return resource;
 			}
 			else {
 				throw new StorageFileNotFoundException(
-						"Could not read file: " + fid);
+						"Could not read file: " + path);
 
 			}
 		}
 		catch (MalformedURLException e) {
-			throw new StorageFileNotFoundException("Could not read file: " + fid, e);
+			throw new StorageFileNotFoundException("Could not read file: " + file.toString(), e);
 		}
 	}
 
@@ -74,20 +75,20 @@ public class FileSystemStorageService implements StorageService {
 	}
 	
 	@Override
-	public void delete(String fid) {
+	public void delete(String path) {
+		Path file = this.rootLocation.resolveSibling(path);
 		try {
-			Path file = this.rootLocation.resolve(fid);
 			Resource resource = new UrlResource(file.toUri());
 			if (resource.exists()) {
 				FileSystemUtils.deleteRecursively(file);
 			}
 			else {
 				throw new StorageFileNotFoundException(
-						"Could not delete file: " + fid);
+						"Could not delete file: " + path);
 			}
 		}
 		catch (MalformedURLException e) {
-			throw new StorageFileNotFoundException("Could not read file: " + fid, e);
+			throw new StorageFileNotFoundException("Could not read file: " + file.toString(), e);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

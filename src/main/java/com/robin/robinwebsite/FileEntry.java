@@ -20,6 +20,11 @@ public class FileEntry {
 	
 	public FileEntry() {}
 	
+	public FileEntry(String name) {
+		this.name = name;
+		this.createTime = new Date().getTime();
+	}
+	
 	public FileEntry(String name, String path) {
 		this.name = name;
 		this.path = path;
@@ -46,7 +51,14 @@ public class FileEntry {
 		return createTime;
 	}
 	
+	public void setPath(String path) {
+		this.path = path;
+	}
+	
 	public String getPath() {
+		if (path == null) {
+			path = "/" + id;
+		}
 		return path;
 	}
 	

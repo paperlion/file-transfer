@@ -7,9 +7,9 @@ export default function Navbar(props) {
 	return (
 		<AppBar 
 			position="static" 
-			sx={{ position: "sticky", top: "0", zIndex: "100" }}
+			sx={{ position: "sticky", top: "0", zIndex: "60", maxWidth: "none" }}
 		>
-			<Container maxWidth="xl">
+			<Container maxWidth="false">
 				<Toolbar disableGutters>
 					<Box sx={{ flexGrow : 1, display: 'flex', justifyContent: 'flex-end' }}>
 						{pages.map((page) => (

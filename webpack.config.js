@@ -8,7 +8,8 @@ module.exports = {
     resolve: {
         alias: {
             'stompjs': __dirname + '/node_modules' + '/stompjs/lib/stomp.js',
-        }
+        },
+        extensions: ['.js', '.jsx']
     },
     output: {
         path: __dirname,

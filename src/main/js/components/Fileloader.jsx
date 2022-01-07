@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import {Box, Container, Button, Link, Typography, Grid} from "@mui/material";
 
 const WELCOME = "Welcome to Robin's Fast File Transfer!"
-const SUBTITLE = "upload and achieve files everywhere with 4-digit code."
+const SUBTITLE = "upload and achieve files everywhere with 4-character code."
 
 const UPLOADSUCCESS = "Upload Sucess. Your Code Is:";
-const SUBUPLOADSUCCESS = "upload another file:";
+const SUBUPLOADSUCCESS = "files will be kept for 60 minutes";
 
 export default function Fileloader(props) {
 	const [message, setMessage] = useState(WELCOME);
@@ -21,19 +21,60 @@ export default function Fileloader(props) {
 
 	const uploadFile = (e) => {
 		e.preventDefault();
+		if (!currFile) {
+			alert("No file selected!")
+			return;
+		}
 		var data = new FormData()
 		data.append('file', currFile)
 		fetch('/file', {
 			method: 'POST',
 			body: data
-		}).then( res => {
+		}).then(res => {
 			return res.text().then(text=>{
-				setMessage(UPLOADSUCCESS);
-				setSubMessage(SUBUPLOADSUCCESS);
-				setCode(text);
-			})
-		});
+				if (res.ok) {
+					setMessage(UPLOADSUCCESS);
+					setSubMessage(SUBUPLOADSUCCESS);
+					setCode(text);
+					setCurrentFile(null);
+					setCurrentFileName(null);
+					document.getElementById('input-file').value="";
+					window.scrollTo({
+						top: 0,
+					});
+				} else {
+					//error happens
+					alert(text);
+				}
+			});
+		})
 	}
+
+	const messageShowCurrFile = (currFile) => {
+		if (currFile) { return (
+			<Typography
+				variant="h2"
+				component="div"
+				sx={{
+					mb: {xs: 2},
+					fontSize: {xs: "1rem", md: "1.5rem"},
+				}}
+			>
+				{currFileName}
+			</Typography>
+		)} else { return (
+			<Typography
+				variant="h2"
+				component="div"
+				sx={{
+					mb: {xs: 2},
+					fontSize: {xs: "1rem", md: "1.5rem"},
+				}}
+			>
+				Click to upload the file. (max size : 1024 KB)
+			</Typography>
+		)}
+	} 
 
 	return (
 		<Grid container
@@ -41,13 +82,13 @@ export default function Fileloader(props) {
 			direction="column"
 			alignItems="center"
 			justifyContent="center"
-			style={{ minHeight: '100vh'}}
+			style={{height: '75vh'}}
 		>
 			<Grid item>
 				<Typography
 			  		component="div"
 					sx={{
-						mb: {xs: 2.5},
+						mb: {xs: 2},
 						fontSize: {xs: "1.5rem", md: "3rem"},
 					}}
 			  		color="primary"
@@ -57,22 +98,20 @@ export default function Fileloader(props) {
 			</Grid>
 			{code && <Grid item>
 				<Typography
-					variant="h2"
 					component="div"
 					sx={{
-						mb: {xs: 2.5},
+						mb: {xs: 2},
 						fontSize: {xs: "2rem", md: "4rem"},
 					}}
 				>
-					{code}
+					{code.toUpperCase()}
 				</Typography> 
 			</Grid>}
 			<Grid item>
 				<Typography
-					variant="h2"
 					component="div"
 					sx={{
-						mb: {xs: 2.5},
+						mb: {xs: 2},
 						fontSize: {xs: "1rem", md: "1.5rem"},
 					}}
 				>
@@ -86,33 +125,25 @@ export default function Fileloader(props) {
 						width : '80vw', 
 						height: '40vh', 
 						borderRadius: 50, 
-						border: "1px dashed grey"}}
+						border: "1px dashed grey",
+						textTransform:'none'}}
 				>
 					<input
+						id="input-file"
 						type="file"
 						onChange={changeFile}
 						hidden
 					/>
-
-					<Typography
-						variant="h2"
-						component="div"
-						sx={{
-							mb: {xs: 2.5},
-							fontSize: {xs: "1rem", md: "1.5rem"},
-						}}
-					>
-						{currFileName}
-					</Typography>
+					{messageShowCurrFile(currFile)}
 				</Button>
 			</Grid>
 			<Grid item>
 				<Button
 					variant="contained"
-					component="label"
 					onClick={uploadFile}
+					size="large"
 				>
-					Upload File
+					Upload
 				</Button>
 			</Grid>
 		</Grid>
