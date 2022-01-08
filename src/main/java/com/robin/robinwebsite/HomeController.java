@@ -37,18 +37,18 @@ public class HomeController {
 		this.storageService = storageService;
 	}
 	
-	@RequestMapping("/")
+	@RequestMapping(value = { "/", "/{x:[\\w\\-]+}", "/{x:^(?!api$).*$}/**/{y:[\\w\\-]+}" })
 	public String index() {
 		return "index";
 	}
 	
-	@GetMapping("/files/{fid}")
+	@GetMapping("/api/files/{fid}")
 	@ResponseBody
 	public FileEntry getFile(@PathVariable String fid) {
 		return repository.findById(fid).orElse(new FileEntry());
 	}
 	
-	@GetMapping("/download/{fid}")
+	@GetMapping("/api/download/{fid}")
 	@ResponseBody
 	public ResponseEntity<Resource> downloadFile(@PathVariable String fid) {
 		FileEntry fileEntry = repository.findById(fid).orElse(null);
@@ -60,13 +60,13 @@ public class HomeController {
 		return null;
 	}
 	
-	@RequestMapping("/files")
+	@RequestMapping("/api/files")
 	@ResponseBody
 	public Iterable<FileEntry> getFiles() {
 		return repository.findAll();
 	}
 	
-	@PostMapping("/file")
+	@PostMapping("/api/file")
 	@ResponseBody
 	public String uploadFile(@RequestParam("file") MultipartFile file) {
 		String fileName = file.getOriginalFilename();

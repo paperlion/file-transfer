@@ -3,19 +3,29 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Outlet,
+  NoMatch
+} from "react-router-dom";
+
 import { Container } from '@mui/material'
 
-import Navbar from "./components/Navbar";
-import Fileloader from "./components/Fileloader"
-import Fileachiever from "./components/Fileachiever"
+import Filetransfer from "./pages/Filetransfer"
+import Homepage from "./pages/Homepage"
+import Notfound from "./pages/Notfound"
 
 function App() {
   return (
-  	<Container disableGutters maxWidth="false" sx={{bgcolor:"#DFF6FF"}}> 
-		<Navbar />
-		<Fileloader />
-		<Fileachiever />
-    </Container>
+  	<BrowserRouter>
+	    <Routes>
+	     	<Route path="/" element={<Homepage />} />
+	     	<Route path="tool" element={<Filetransfer />} />
+	     	<Route path="*" element={<Notfound status={404}/>}/>
+	    </Routes>
+  	</BrowserRouter>
   );
 }
 ReactDOM.render(

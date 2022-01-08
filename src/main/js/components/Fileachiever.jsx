@@ -39,7 +39,7 @@ export default function Fileachiever(props) {
 			setCodeErrorMessage(null)
 		}
 		setFileInfo(null);
-		fetch(`/files/${code.toLowerCase()}`, {
+		fetch(`/api/files/${code.toLowerCase()}`, {
 			method: 'GET',
 		}).then(res => {
 			return res.json().then(json=>{

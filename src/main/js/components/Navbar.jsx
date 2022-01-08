@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {AppBar, Box, Toolbar, Container, Button, Link} from "@mui/material";
 
-const pages = ["home", "about"]
-
 export default function Navbar(props) {
 	return (
 		<AppBar 
@@ -12,17 +10,27 @@ export default function Navbar(props) {
 			<Container maxWidth="false">
 				<Toolbar disableGutters>
 					<Box sx={{ flexGrow : 1, display: 'flex', justifyContent: 'flex-end' }}>
-						{pages.map((page) => (
-							<Button
-								key={page}
-								sx={{ color: "white"}}
-								size="large"
-							>
-								<Link href={`#${page}`} underline="none" color="inherit">
-									{page}
-								</Link>
-							</Button>
-						))}
+						<Button
+							sx={{ color: "white"}}
+							size="large"
+							href="/#home"
+						>
+							home
+						</Button>
+						<Button
+							sx={{ color: "white"}}
+							size="large"
+							href="/#about"
+						>
+							about
+						</Button>
+						<Button
+							sx={{ color: "white"}}
+							size="large"
+							href="/tool"
+						>
+							tool
+						</Button>
 					</Box>
 				</Toolbar>
 			</Container>

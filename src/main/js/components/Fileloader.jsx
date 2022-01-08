@@ -27,7 +27,7 @@ export default function Fileloader(props) {
 		}
 		var data = new FormData()
 		data.append('file', currFile)
-		fetch('/file', {
+		fetch('/api/file', {
 			method: 'POST',
 			body: data
 		}).then(res => {
@@ -71,7 +71,7 @@ export default function Fileloader(props) {
 					fontSize: {xs: "1rem", md: "1.5rem"},
 				}}
 			>
-				Click to upload the file. (max size : 1024 KB)
+				Click to upload the file. (max size : 10 MB)
 			</Typography>
 		)}
 	} 
