@@ -4,6 +4,7 @@ import { Container } from '@mui/material'
 import Navbar from "../components/Navbar";
 import Fileloader from "../components/Fileloader"
 import Fileachiever from "../components/Fileachiever"
+import Copyright from "../components/Copyright"
 
 
 export default function Filetransfer(props) {
@@ -12,6 +13,7 @@ export default function Filetransfer(props) {
 			<Navbar />
 			<Fileloader />
 			<Fileachiever />
+			<Copyright />
 		</Container>
 	);
 }

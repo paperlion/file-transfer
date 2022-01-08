@@ -10,7 +10,7 @@ const paragrah = {
 	interest1 : "good at programming, but don't like it",
 	interest2 : "poor at video games, but do love it",
 	age : "23 year-old ",
-	like : "Programmer, Games Lover, New Tech Seeker and Lazy Dreamer",
+	like : "Programmer, Games Lover, New Tech Seeker and Sometimes Day Dreamer",
 	skill : "Java/Python/JS/C++ Programming, Full-stack Development",
 	goal : "Looking for a job",
 	announce : "this is my first website, please take care with it."
@@ -33,27 +33,34 @@ export default function Personalinfo (props) {
 					direction="column"
 					alignItems="center"
 					justifyContent="center"
+					spacing={5}
 				>
-					<Avatar
-						alt="Robin Ren"
-						src="/images/selfie.png"
-						sx={{ width: {xs :300, md :400}, height: {xs :300, md :400} }}
-					/>
-					<Typography
-						sx={{
-							mb: { xs: 2, md: 5 },
-							fontSize: {xs: "1rem", md: "1.5rem"},
-						}}
-						color="primary"
-					>
-						{"renht@seas.upenn.edu"}
-					</Typography>
+					<Grid item>
+						<Avatar
+							alt="Robin Ren"
+							src="/images/selfie.png"
+							sx={{ width: {xs :300, md :400}, height: {xs :300, md :400} }}
+						/>
+					</Grid>
+					<Grid item>
+						<Typography
+							sx={{
+								mb: { xs: 2, md: 5 },
+								fontSize: {xs: "1rem", md: "1.5rem"},
+							}}
+							color="primary"
+						>
+							{"renht@seas.upenn.edu"}
+						</Typography>
+					</Grid>
 				</Grid>
 			</Grid>
 			<Grid item xs={6}>
-				<Grid spacing={0}
+				<Grid 
+					container
+					spacing={0}
 					direction="column"
-					alignItems="center"
+					
 					justifyContent="center"
 				>
 					<Typography

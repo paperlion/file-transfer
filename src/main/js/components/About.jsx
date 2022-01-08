@@ -18,7 +18,7 @@ export default function About(props){
 					variant="h2"
 					sx={{
 						mb: { xs: 2, md: 5 },
-						fontSize: { xs: "3rem", md: "4rem" },
+						fontSize: { xs: "2rem", md: "3rem" },
 					}}
 					color = "primary"
 				>
@@ -32,7 +32,7 @@ export default function About(props){
 		        >
 					<Typography
 						sx={{
-							fontSize: { xs: "1.5rem", md: "2rem" },
+							fontSize: { xs: "1.5rem"},
 							fontFamily: "Monospace",
 						}}
 					>
@@ -46,14 +46,13 @@ export default function About(props){
     		<Grid item>
     			<Typography
 					variant="h2"
-					component="div"
 					sx={{
 						mb: { xs: 2, md: 5 },
-						fontSize: { xs: "3rem", md: "4rem" },
+						fontSize: { xs: "2rem", md: "3rem" },
 					}}
 					color = "primary"
 				>
-					About Website
+					About This Website
 				</Typography>
 				<Card
 		          sx={{
@@ -63,7 +62,7 @@ export default function About(props){
 		        >
 					<Typography
 						sx={{
-							fontSize: { xs: "1.5rem", md: "2rem" },
+							fontSize: { xs: "1.5rem"},
 							fontFamily: "Monospace",
 						}}
 					>
@@ -88,7 +87,7 @@ export default function About(props){
 							Chris Z.'s
 						</Link>
 						, his website inspires me a lot.
-						It is impossible for a rookie like me to finish a full-stack work without his opensource code.
+						It is impossible for a rookie like me to finish a full-stack work without his open-source code.
 					</Typography>
 				</Card>
     		</Grid>
