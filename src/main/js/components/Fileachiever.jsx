@@ -61,7 +61,7 @@ export default function Fileachiever(props) {
 			spacing={0}
 			direction="column"
 			alignItems="center"	
-			style={{height: '50vh'}}
+			style={{minHeight: '50vh'}}
 		>
 			<Grid item>
 				<Typography
@@ -123,7 +123,7 @@ export default function Fileachiever(props) {
 				</Typography>
 			</Grid>
 			<Grid item>
-			{fileInfo && <Fileavatar filename={fileInfo.name} link={`download/${fileInfo.id}`}/>}
+			{fileInfo && <Fileavatar filename={fileInfo.name} link={`api/download/${fileInfo.id}`}/>}
       		</Grid>
 		</Grid>
 	);

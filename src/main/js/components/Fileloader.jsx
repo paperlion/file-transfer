@@ -79,10 +79,10 @@ export default function Fileloader(props) {
 	return (
 		<Grid container
 			spacing={0}
-			direction="column"
+			flexDirection={{ xs: "column"}}
 			alignItems="center"
 			justifyContent="center"
-			style={{height: '75vh'}}
+			style={{minHeight: '75vh'}}
 		>
 			<Grid item>
 				<Typography
