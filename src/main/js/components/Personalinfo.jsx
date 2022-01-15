@@ -38,7 +38,7 @@ export default function Personalinfo (props) {
 					<Grid item>
 						<Avatar
 							alt="Robin Ren"
-							src="/images/selfie.png"
+							src="/images/selfie.jpeg"
 							sx={{ width: {xs :300, md :400}, height: {xs :300, md :400} }}
 						/>
 					</Grid>
