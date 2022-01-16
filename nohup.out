@@ -1,0 +1,435 @@
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.google.inject.internal.cglib.core.$ReflectUtils$1 (file:/usr/share/maven/lib/guice.jar) to method java.lang.ClassLoader.defineClass(java.lang.String,byte[],int,int,java.security.ProtectionDomain)
+WARNING: Please consider reporting this to the maintainers of com.google.inject.internal.cglib.core.$ReflectUtils$1
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[[1;34mINFO[m] Scanning for projects...
+[[1;33mWARNING[m] 
+[[1;33mWARNING[m] Some problems were encountered while building the effective model for com.robin:robin-website:jar:0.0.1-SNAPSHOT
+[[1;33mWARNING[m] 'build.plugins.plugin.version' for com.github.eirslett:frontend-maven-plugin is missing. @ line 69, column 12
+[[1;33mWARNING[m] 
+[[1;33mWARNING[m] It is highly recommended to fix these problems because they threaten the stability of your build.
+[[1;33mWARNING[m] 
+[[1;33mWARNING[m] For this reason, future Maven versions might no longer support building such malformed projects.
+[[1;33mWARNING[m] 
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m----------------------< [0;36mcom.robin:robin-website[0;1m >-----------------------[m
+[[1;34mINFO[m] [1mBuilding robin-website 0.0.1-SNAPSHOT[m
+[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m>>> [0;32mspring-boot-maven-plugin:2.6.2:run[m [1m(default-cli)[0;1m > [0;1mtest-compile[m @ [36mrobin-website[0;1m >>>[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mfrontend-maven-plugin:1.12.1:install-node-and-npm[m [1m(install node and npm)[m @ [36mrobin-website[0;1m ---[m
+[[1;34mINFO[m] Node v12.14.0 is already installed.
+[[1;34mINFO[m] NPM 6.13.4 is already installed.
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mfrontend-maven-plugin:1.12.1:npm[m [1m(npm install)[m @ [36mrobin-website[0;1m ---[m
+[[1;34mINFO[m] Running 'npm install' in /home/ubuntu/robin-website
+[[1;34mINFO[m] npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@2.3.2 (node_modules/fsevents):
+[[1;34mINFO[m] npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.3.2: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
+[[1;34mINFO[m] npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.13 (node_modules/watchpack-chokidar2/node_modules/fsevents):
+[[1;34mINFO[m] npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.13: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
+[[1;34mINFO[m] 
+[[1;34mINFO[m] audited 673 packages in 5.416s
+[[1;34mINFO[m] 
+[[1;34mINFO[m] 29 packages are looking for funding
+[[1;34mINFO[m]   run `npm fund` for details
+[[1;34mINFO[m] 
+[[1;34mINFO[m] found 4 vulnerabilities (3 moderate, 1 high)
+[[1;34mINFO[m]   run `npm audit fix` to fix them, or `npm audit` for details
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mfrontend-maven-plugin:1.12.1:webpack[m [1m(webpack build)[m @ [36mrobin-website[0;1m ---[m
+[[1;34mINFO[m] Running 'webpack.js ' in /home/ubuntu/robin-website
+[[1;34mINFO[m] Hash: c05a8eaeec1fcab82ca8
+[[1;34mINFO[m] Version: webpack 4.46.0
+[[1;34mINFO[m] Time: 9735ms
+[[1;34mINFO[m] Built at: 01/13/2022 7:10:17 AM
+[[1;34mINFO[m]                                           Asset     Size  Chunks                          Chunk Names
+[[1;34mINFO[m]     ./src/main/resources/static/built/bundle.js  349 KiB       0  [emitted]        [big]  main
+[[1;34mINFO[m] ./src/main/resources/static/built/bundle.js.map  495 KiB       0  [emitted] [dev]         main
+[[1;34mINFO[m] Entrypoint main [big] = ./src/main/resources/static/built/bundle.js ./src/main/resources/static/built/bundle.js.map
+[[1;34mINFO[m]   [4] ./node_modules/@mui/material/styles/styled.js + 2 modules 8.31 KiB {0} [built]
+[[1;34mINFO[m]       |    3 modules
+[[1;34mINFO[m]   [7] ./node_modules/@mui/material/styles/useThemeProps.js + 2 modules 926 bytes {0} [built]
+[[1;34mINFO[m]       |    3 modules
+[[1;34mINFO[m]  [15] ./node_modules/@mui/system/esm/spacing.js + 1 modules 5.4 KiB {0} [built]
+[[1;34mINFO[m]       |    2 modules
+[[1;34mINFO[m]  [27] ./node_modules/@mui/material/utils/createSvgIcon.js + 2 modules 7.25 KiB {0} [built]
+[[1;34mINFO[m]       |    3 modules
+[[1;34mINFO[m]  [28] ./node_modules/@mui/material/utils/useIsFocusVisible.js + 1 modules 5.31 KiB {0} [built]
+[[1;34mINFO[m]       |    2 modules
+[[1;34mINFO[m]  [29] ./node_modules/@mui/material/utils/isMuiElement.js + 1 modules 294 bytes {0} [built]
+[[1;34mINFO[m]       |    2 modules
+[[1;34mINFO[m]  [30] ./node_modules/@mui/system/esm/getThemeValue.js + 10 modules 11.5 KiB {0} [built]
+[[1;34mINFO[m]       |    11 modules
+[[1;34mINFO[m]  [36] ./node_modules/@mui/material/utils/useControlled.js + 1 modules 1.89 KiB {0} [built]
+[[1;34mINFO[m]       |    2 modules
+[[1;34mINFO[m]  [38] ./node_modules/@mui/styled-engine/index.js + 3 modules 13.2 KiB {0} [built]
+[[1;34mINFO[m]       |    4 modules
+[[1;34mINFO[m]  [39] ./node_modules/@mui/system/esm/useTheme.js + 3 modules 1.13 KiB {0} [built]
+[[1;34mINFO[m]       |    4 modules
+[[1;34mINFO[m]  [45] ./node_modules/@mui/material/utils/requirePropFactory.js + 1 modules 1.22 KiB {0} [built]
+[[1;34mINFO[m]       |    2 modules
+[[1;34mINFO[m]  [56] ./node_modules/@mui/material/utils/index.js + 7 modules 2.53 KiB {0} [built]
+[[1;34mINFO[m]       |    8 modules
+[[1;34mINFO[m]  [60] ./node_modules/@mui/material/styles/createTheme.js + 13 modules 20.6 KiB {0} [built]
+[[1;34mINFO[m]       |    14 modules
+[[1;34mINFO[m]  [82] ./src/main/js/app.js + 109 modules 468 KiB {0} [built]
+[[1;34mINFO[m]       | ./src/main/js/app.js 969 bytes [built]
+[[1;34mINFO[m]       | ./src/main/js/pages/Filetransfer.jsx 696 bytes [built]
+[[1;34mINFO[m]       | ./src/main/js/pages/Homepage.jsx 677 bytes [built]
+[[1;34mINFO[m]       | ./src/main/js/pages/Notfound.jsx 987 bytes [built]
+[[1;34mINFO[m]       |     + 106 hidden modules
+[[1;34mINFO[m] [120] ./node_modules/@mui/system/esm/createTheme/createTheme.js + 3 modules 4.45 KiB {0} [built]
+[[1;34mINFO[m]       |    4 modules
+[[1;34mINFO[m]     + 617 hidden modules
+[[1;34mINFO[m] 
+[[1;34mINFO[m] WARNING in asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
+[[1;34mINFO[m] This can impact web performance.
+[[1;34mINFO[m] Assets: 
+[[1;34mINFO[m]   ./src/main/resources/static/built/bundle.js (349 KiB)
+[[1;34mINFO[m] 
+[[1;34mINFO[m] WARNING in entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (244 KiB). This can impact web performance.
+[[1;34mINFO[m] Entrypoints:
+[[1;34mINFO[m]   main (349 KiB)
+[[1;34mINFO[m]       ./src/main/resources/static/built/bundle.js
+[[1;34mINFO[m] 
+[[1;34mINFO[m] 
+[[1;34mINFO[m] WARNING in webpack performance recommendations: 
+[[1;34mINFO[m] You can limit the size of your bundles by using import() or require.ensure to lazy load some parts of your application.
+[[1;34mINFO[m] For more info visit https://webpack.js.org/guides/code-splitting/
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:3.2.0:resources[m [1m(default-resources)[m @ [36mrobin-website[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered properties files.
+[[1;34mINFO[m] Copying 1 resource
+[[1;34mINFO[m] Copying 11 resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.8.1:compile[m [1m(default-compile)[m @ [36mrobin-website[0;1m ---[m
+[[1;34mINFO[m] Nothing to compile - all classes are up to date
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:3.2.0:testResources[m [1m(default-testResources)[m @ [36mrobin-website[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered properties files.
+[[1;34mINFO[m] skip non existing resourceDirectory /home/ubuntu/robin-website/src/test/resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.8.1:testCompile[m [1m(default-testCompile)[m @ [36mrobin-website[0;1m ---[m
+[[1;34mINFO[m] Nothing to compile - all classes are up to date
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m<<< [0;32mspring-boot-maven-plugin:2.6.2:run[m [1m(default-cli)[0;1m < [0;1mtest-compile[m @ [36mrobin-website[0;1m <<<[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mspring-boot-maven-plugin:2.6.2:run[m [1m(default-cli)[m @ [36mrobin-website[0;1m ---[m
+[[1;34mINFO[m] Attaching agents: []
+07:10:20.861 [Thread-0] DEBUG org.springframework.boot.devtools.restart.classloader.RestartClassLoader - Created RestartClassLoader org.springframework.boot.devtools.restart.classloader.RestartClassLoader@7d29fd71
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.6.2)
+
+2022-01-13 07:10:21.468  INFO 167116 --- [  restartedMain] c.r.r.RobinWebsiteApplication            : Starting RobinWebsiteApplication using Java 11.0.13 on ip-172-31-39-186 with PID 167116 (/home/ubuntu/robin-website/target/classes started by ubuntu in /home/ubuntu/robin-website)
+2022-01-13 07:10:21.469  INFO 167116 --- [  restartedMain] c.r.r.RobinWebsiteApplication            : No active profile set, falling back to default profiles: default
+2022-01-13 07:10:21.548  INFO 167116 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-01-13 07:10:21.548  INFO 167116 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-01-13 07:10:22.604  INFO 167116 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-01-13 07:10:22.676  INFO 167116 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 61 ms. Found 1 JPA repository interfaces.
+2022-01-13 07:10:23.697  INFO 167116 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-01-13 07:10:23.712  INFO 167116 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-01-13 07:10:23.713  INFO 167116 --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-01-13 07:10:23.820  INFO 167116 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-01-13 07:10:23.820  INFO 167116 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2271 ms
+2022-01-13 07:10:23.877  INFO 167116 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-01-13 07:10:24.031  INFO 167116 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-01-13 07:10:24.042  INFO 167116 --- [  restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2022-01-13 07:10:24.483  INFO 167116 --- [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-01-13 07:10:24.602  INFO 167116 --- [  restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.3.Final
+2022-01-13 07:10:24.857  INFO 167116 --- [  restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-01-13 07:10:24.994  INFO 167116 --- [  restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-01-13 07:10:25.571  INFO 167116 --- [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-01-13 07:10:25.580  INFO 167116 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-01-13 07:10:25.962  WARN 167116 --- [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-01-13 07:10:26.559  INFO 167116 --- [  restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-01-13 07:10:27.208  INFO 167116 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-01-13 07:10:27.250  INFO 167116 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-01-13 07:10:27.269  INFO 167116 --- [  restartedMain] c.r.r.RobinWebsiteApplication            : Started RobinWebsiteApplication in 6.392 seconds (JVM running for 7.15)
+2022-01-13 07:10:44.087  INFO 167116 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-01-13 07:10:44.088  INFO 167116 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-01-13 07:10:44.089  INFO 167116 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-01-13 11:35:33.793  INFO 167116 --- [nio-8080-exec-6] o.apache.coyote.http11.Http11Processor   : Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+
+java.lang.IllegalArgumentException: Invalid character found in method name [0x160x030x010x010xfc0x010x000x010xf80x030x030xa00xe40x0e~0xfd8_0xe6O0x9d0xaf0x9b0xa4]/0x80*0xca0xdf0xdd+0xc5aB0xed0x130xa10xfa0xc30xf70x03Z0x000x01<0xcc0x140xcc0x130xcc0x150xc000xc0,0xc0(0xc0$0xc00x140xc00x0a0x000xa50x000xa30x000xa10x000x9f0x00k0x00j0x00i0x00h0x0090x0080x0070x0060xc0w0xc0s0x000xc40x000xc30x000xc20x000xc10x000x880x000x870x000x860x000x850xc00x190x000xa70x00m0x00:0x000xc50x000x890xc020xc0.0xc0*0xc0&0xc00x0f0xc00x050xc0y0xc0u0x000x9d0x00=0x0050x000xc00x000x840x000x950xc0/0xc0+0xc0'0xc0#0xc00x130xc00x090x000xa40x000xa20x000xa00x000x9e0x00g0x00@0x00?0x00>0x0030x0020x0010x0000xc0v0xc0r0x000xbe0x000xbd0x000xbc0x000xbb0x000x9a0x000x990x000x980x000x970x00E0x00D0x00C0x00B0xc00x180x000xa60x00l0x0040x000xbf0x000x9b0x00F0xc010xc0-0xc0)0xc0%0xc00x0e0xc00x040xc0x0xc0t0x000x9c0x00<0x00/0x000xba0x000x960x00A0x000x070x000x940xc00x110xc00x070x00f0xc00x160x000x180xc00x0c0xc00x020x000x050x000x040x000x920xc00x120xc00x080x000x160x000x130x000x100x000x0d0xc00x170x000x1b0xc00x0d0xc00x030x000x0a0x000x930x00c0x000x150x000x120x000x0f0x000x0c0x000x1a0x00b0x000x090x00a0x00e0x00d0x00`0x000x140x000x110x000x0e0x000x0b0x000x190x000x080x000x060x000x170x000x030xc00x150xc00x100xc00x060xc00x0b0xc00x010x00;0x000x020x000x010x000xff0x020x010x000x000x920x000x000x000x120x000x100x000x000x0d18.218.115.730x000x0b0x000x040x030x000x010x020x000x0a0x00:0x0080x000x0e0x000x0d0x000x190x000x1c0x000x0b0x000x0c0x000x1b0x000x180x000x090x000x0a0x000x1a0x000x160x000x170x000x080x000x060x000x070x000x140x000x150x000x040x000x050x000x120x000x130x000x010x000x020x000x030x000x0f0x000x100x000x110x00#0x000x000x000x0d0x00 ]. HTTP method names must be tokens
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:419) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:269) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:895) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1732) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at java.base/java.lang.Thread.run(Thread.java:829) ~[na:na]
+
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.google.inject.internal.cglib.core.$ReflectUtils$1 (file:/usr/share/maven/lib/guice.jar) to method java.lang.ClassLoader.defineClass(java.lang.String,byte[],int,int,java.security.ProtectionDomain)
+WARNING: Please consider reporting this to the maintainers of com.google.inject.internal.cglib.core.$ReflectUtils$1
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[[1;34mINFO[m] Scanning for projects...
+[[1;33mWARNING[m] 
+[[1;33mWARNING[m] Some problems were encountered while building the effective model for com.robin:robin-website:jar:0.0.1-SNAPSHOT
+[[1;33mWARNING[m] 'build.plugins.plugin.version' for com.github.eirslett:frontend-maven-plugin is missing. @ line 69, column 12
+[[1;33mWARNING[m] 
+[[1;33mWARNING[m] It is highly recommended to fix these problems because they threaten the stability of your build.
+[[1;33mWARNING[m] 
+[[1;33mWARNING[m] For this reason, future Maven versions might no longer support building such malformed projects.
+[[1;33mWARNING[m] 
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m----------------------< [0;36mcom.robin:robin-website[0;1m >-----------------------[m
+[[1;34mINFO[m] [1mBuilding robin-website 0.0.1-SNAPSHOT[m
+[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m>>> [0;32mspring-boot-maven-plugin:2.6.2:run[m [1m(default-cli)[0;1m > [0;1mtest-compile[m @ [36mrobin-website[0;1m >>>[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mfrontend-maven-plugin:1.12.1:install-node-and-npm[m [1m(install node and npm)[m @ [36mrobin-website[0;1m ---[m
+[[1;34mINFO[m] Node v12.14.0 is already installed.
+[[1;34mINFO[m] NPM 6.13.4 is already installed.
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mfrontend-maven-plugin:1.12.1:npm[m [1m(npm install)[m @ [36mrobin-website[0;1m ---[m
+[[1;34mINFO[m] Running 'npm install' in /home/ubuntu/robin-website
+[[1;34mINFO[m] npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@2.3.2 (node_modules/fsevents):
+[[1;34mINFO[m] npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.3.2: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
+[[1;34mINFO[m] npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.13 (node_modules/watchpack-chokidar2/node_modules/fsevents):
+[[1;34mINFO[m] npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.13: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
+[[1;34mINFO[m] 
+[[1;34mINFO[m] audited 673 packages in 5.436s
+[[1;34mINFO[m] 
+[[1;34mINFO[m] 29 packages are looking for funding
+[[1;34mINFO[m]   run `npm fund` for details
+[[1;34mINFO[m] 
+[[1;34mINFO[m] found 4 vulnerabilities (3 moderate, 1 high)
+[[1;34mINFO[m]   run `npm audit fix` to fix them, or `npm audit` for details
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mfrontend-maven-plugin:1.12.1:webpack[m [1m(webpack build)[m @ [36mrobin-website[0;1m ---[m
+[[1;34mINFO[m] Running 'webpack.js ' in /home/ubuntu/robin-website
+[[1;34mINFO[m] Hash: c05a8eaeec1fcab82ca8
+[[1;34mINFO[m] Version: webpack 4.46.0
+[[1;34mINFO[m] Time: 9555ms
+[[1;34mINFO[m] Built at: 01/13/2022 11:11:13 PM
+[[1;34mINFO[m]                                           Asset     Size  Chunks                          Chunk Names
+[[1;34mINFO[m]     ./src/main/resources/static/built/bundle.js  349 KiB       0  [emitted]        [big]  main
+[[1;34mINFO[m] ./src/main/resources/static/built/bundle.js.map  495 KiB       0  [emitted] [dev]         main
+[[1;34mINFO[m] Entrypoint main [big] = ./src/main/resources/static/built/bundle.js ./src/main/resources/static/built/bundle.js.map
+[[1;34mINFO[m]   [4] ./node_modules/@mui/material/styles/styled.js + 2 modules 8.31 KiB {0} [built]
+[[1;34mINFO[m]       |    3 modules
+[[1;34mINFO[m]   [7] ./node_modules/@mui/material/styles/useThemeProps.js + 2 modules 926 bytes {0} [built]
+[[1;34mINFO[m]       |    3 modules
+[[1;34mINFO[m]  [15] ./node_modules/@mui/system/esm/spacing.js + 1 modules 5.4 KiB {0} [built]
+[[1;34mINFO[m]       |    2 modules
+[[1;34mINFO[m]  [27] ./node_modules/@mui/material/utils/createSvgIcon.js + 2 modules 7.25 KiB {0} [built]
+[[1;34mINFO[m]       |    3 modules
+[[1;34mINFO[m]  [28] ./node_modules/@mui/material/utils/useIsFocusVisible.js + 1 modules 5.31 KiB {0} [built]
+[[1;34mINFO[m]       |    2 modules
+[[1;34mINFO[m]  [29] ./node_modules/@mui/material/utils/isMuiElement.js + 1 modules 294 bytes {0} [built]
+[[1;34mINFO[m]       |    2 modules
+[[1;34mINFO[m]  [30] ./node_modules/@mui/system/esm/getThemeValue.js + 10 modules 11.5 KiB {0} [built]
+[[1;34mINFO[m]       |    11 modules
+[[1;34mINFO[m]  [36] ./node_modules/@mui/material/utils/useControlled.js + 1 modules 1.89 KiB {0} [built]
+[[1;34mINFO[m]       |    2 modules
+[[1;34mINFO[m]  [38] ./node_modules/@mui/styled-engine/index.js + 3 modules 13.2 KiB {0} [built]
+[[1;34mINFO[m]       |    4 modules
+[[1;34mINFO[m]  [39] ./node_modules/@mui/system/esm/useTheme.js + 3 modules 1.13 KiB {0} [built]
+[[1;34mINFO[m]       |    4 modules
+[[1;34mINFO[m]  [45] ./node_modules/@mui/material/utils/requirePropFactory.js + 1 modules 1.22 KiB {0} [built]
+[[1;34mINFO[m]       |    2 modules
+[[1;34mINFO[m]  [56] ./node_modules/@mui/material/utils/index.js + 7 modules 2.53 KiB {0} [built]
+[[1;34mINFO[m]       |    8 modules
+[[1;34mINFO[m]  [60] ./node_modules/@mui/material/styles/createTheme.js + 13 modules 20.6 KiB {0} [built]
+[[1;34mINFO[m]       |    14 modules
+[[1;34mINFO[m]  [82] ./src/main/js/app.js + 109 modules 468 KiB {0} [built]
+[[1;34mINFO[m]       | ./src/main/js/app.js 969 bytes [built]
+[[1;34mINFO[m]       | ./src/main/js/pages/Filetransfer.jsx 696 bytes [built]
+[[1;34mINFO[m]       | ./src/main/js/pages/Homepage.jsx 677 bytes [built]
+[[1;34mINFO[m]       | ./src/main/js/pages/Notfound.jsx 987 bytes [built]
+[[1;34mINFO[m]       |     + 106 hidden modules
+[[1;34mINFO[m] [120] ./node_modules/@mui/system/esm/createTheme/createTheme.js + 3 modules 4.45 KiB {0} [built]
+[[1;34mINFO[m]       |    4 modules
+[[1;34mINFO[m]     + 617 hidden modules
+[[1;34mINFO[m] 
+[[1;34mINFO[m] WARNING in asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
+[[1;34mINFO[m] This can impact web performance.
+[[1;34mINFO[m] Assets: 
+[[1;34mINFO[m]   ./src/main/resources/static/built/bundle.js (349 KiB)
+[[1;34mINFO[m] 
+[[1;34mINFO[m] WARNING in entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (244 KiB). This can impact web performance.
+[[1;34mINFO[m] Entrypoints:
+[[1;34mINFO[m]   main (349 KiB)
+[[1;34mINFO[m]       ./src/main/resources/static/built/bundle.js
+[[1;34mINFO[m] 
+[[1;34mINFO[m] 
+[[1;34mINFO[m] WARNING in webpack performance recommendations: 
+[[1;34mINFO[m] You can limit the size of your bundles by using import() or require.ensure to lazy load some parts of your application.
+[[1;34mINFO[m] For more info visit https://webpack.js.org/guides/code-splitting/
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:3.2.0:resources[m [1m(default-resources)[m @ [36mrobin-website[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered properties files.
+[[1;34mINFO[m] Copying 1 resource
+[[1;34mINFO[m] Copying 11 resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.8.1:compile[m [1m(default-compile)[m @ [36mrobin-website[0;1m ---[m
+[[1;34mINFO[m] Nothing to compile - all classes are up to date
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:3.2.0:testResources[m [1m(default-testResources)[m @ [36mrobin-website[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered properties files.
+[[1;34mINFO[m] skip non existing resourceDirectory /home/ubuntu/robin-website/src/test/resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.8.1:testCompile[m [1m(default-testCompile)[m @ [36mrobin-website[0;1m ---[m
+[[1;34mINFO[m] Nothing to compile - all classes are up to date
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m<<< [0;32mspring-boot-maven-plugin:2.6.2:run[m [1m(default-cli)[0;1m < [0;1mtest-compile[m @ [36mrobin-website[0;1m <<<[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mspring-boot-maven-plugin:2.6.2:run[m [1m(default-cli)[m @ [36mrobin-website[0;1m ---[m
+[[1;34mINFO[m] Attaching agents: []
+23:11:17.106 [Thread-0] DEBUG org.springframework.boot.devtools.restart.classloader.RestartClassLoader - Created RestartClassLoader org.springframework.boot.devtools.restart.classloader.RestartClassLoader@7d29fd71
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.6.2)
+
+2022-01-13 23:11:17.725  INFO 172206 --- [  restartedMain] c.r.r.RobinWebsiteApplication            : Starting RobinWebsiteApplication using Java 11.0.13 on ip-172-31-39-186 with PID 172206 (/home/ubuntu/robin-website/target/classes started by ubuntu in /home/ubuntu/robin-website)
+2022-01-13 23:11:17.726  INFO 172206 --- [  restartedMain] c.r.r.RobinWebsiteApplication            : No active profile set, falling back to default profiles: default
+2022-01-13 23:11:17.805  INFO 172206 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-01-13 23:11:17.806  INFO 172206 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-01-13 23:11:18.924  INFO 172206 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-01-13 23:11:18.996  INFO 172206 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 61 ms. Found 1 JPA repository interfaces.
+2022-01-13 23:11:20.045  INFO 172206 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-01-13 23:11:20.061  INFO 172206 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-01-13 23:11:20.062  INFO 172206 --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-01-13 23:11:20.176  INFO 172206 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-01-13 23:11:20.177  INFO 172206 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2371 ms
+2022-01-13 23:11:20.237  INFO 172206 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-01-13 23:11:20.403  INFO 172206 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-01-13 23:11:20.414  INFO 172206 --- [  restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2022-01-13 23:11:20.867  INFO 172206 --- [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-01-13 23:11:20.988  INFO 172206 --- [  restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.3.Final
+2022-01-13 23:11:21.203  INFO 172206 --- [  restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-01-13 23:11:21.340  INFO 172206 --- [  restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-01-13 23:11:21.935  INFO 172206 --- [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-01-13 23:11:21.944  INFO 172206 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-01-13 23:11:22.352  WARN 172206 --- [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-01-13 23:11:22.950  INFO 172206 --- [  restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-01-13 23:11:23.608  WARN 172206 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2022-01-13 23:11:23.640  WARN 172206 --- [  restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8080 is already in use
+2022-01-13 23:11:23.649  INFO 172206 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-01-13 23:11:23.650  INFO 172206 --- [  restartedMain] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2022-01-13 23:11:23.869  WARN 172206 --- [  restartedMain] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-200]
+2022-01-13 23:11:23.870  INFO 172206 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-01-13 23:11:23.873  INFO 172206 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-01-13 23:11:23.876  INFO 172206 --- [  restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-01-13 23:11:23.896  INFO 172206 --- [  restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-01-13 23:11:23.919 ERROR 172206 --- [  restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;32mBUILD SUCCESS[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  31.187 s
+[[1;34mINFO[m] Finished at: 2022-01-13T23:11:23Z
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+2022-01-14 20:03:17.463  INFO 167116 --- [nio-8080-exec-3] o.apache.coyote.http11.Http11Processor   : Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+
+java.lang.IllegalArgumentException: Invalid character found in method name [080;sh+/tmp/gpon8080&ipv=0...]. HTTP method names must be tokens
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:419) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:269) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:895) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1732) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at java.base/java.lang.Thread.run(Thread.java:829) ~[na:na]
+
+2022-01-15 06:52:22.891  INFO 167116 --- [nio-8080-exec-1] o.apache.coyote.http11.Http11Processor   : Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+
+java.lang.IllegalArgumentException: Invalid character found in method name [0x040x010x00P0xb20x80"c00x00...]. HTTP method names must be tokens
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:419) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:269) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:895) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1732) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at java.base/java.lang.Thread.run(Thread.java:829) ~[na:na]
+
+2022-01-15 14:25:48.800  INFO 167116 --- [nio-8080-exec-8] o.apache.coyote.http11.Http11Processor   : Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+
+java.lang.IllegalArgumentException: Invalid character found in method name [0x0e0x000x000x000x000x000x000x000x000x000x000x000x000x000x000x00bbbb0100000001...]. HTTP method names must be tokens
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:419) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:269) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:895) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1732) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at java.base/java.lang.Thread.run(Thread.java:829) ~[na:na]
+
+2022-01-15 14:25:58.877  INFO 167116 --- [nio-8080-exec-8] o.apache.coyote.http11.Http11Processor   : Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+
+java.lang.IllegalArgumentException: Invalid character found in method name [0x160x030x010x020x000x010x000x010xfc0x030x03]\=0x05_0x900xb7~0xc50x8e0x860xf50xd50xbc0x94J0x8570xb90x930xe7F0x870x010x9d0xb50x9f0x86N0x93qh ]. HTTP method names must be tokens
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:419) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:269) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:895) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1732) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at java.base/java.lang.Thread.run(Thread.java:829) ~[na:na]
+
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;31mBUILD FAILURE[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  2 d 15:44 h
+[[1;34mINFO[m] Finished at: 2022-01-15T22:54:08Z
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;31mERROR[m] Failed to execute goal [32morg.springframework.boot:spring-boot-maven-plugin:2.6.2:run[m [1m(default-cli)[m on project [36mrobin-website[m: [1;31mApplication finished with exit code: 137[m -> [1m[Help 1][m
+[[1;31mERROR[m] 
+[[1;31mERROR[m] To see the full stack trace of the errors, re-run Maven with the [1m-e[m switch.
+[[1;31mERROR[m] Re-run Maven using the [1m-X[m switch to enable full debug logging.
+[[1;31mERROR[m] 
+[[1;31mERROR[m] For more information about the errors and possible solutions, please read the following articles:
+[[1;31mERROR[m] [1m[Help 1][m http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
