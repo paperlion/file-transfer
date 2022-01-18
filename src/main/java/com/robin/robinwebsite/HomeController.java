@@ -54,8 +54,10 @@ public class HomeController {
 		FileEntry fileEntry = repository.findById(fid).orElse(null);
 		if (fileEntry != null) {
 			Resource file = storageService.load(fileEntry.getPath());
-			return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
-					"attachment; filename=\"" + fileEntry.getName() + "\"").body(file);
+			return ResponseEntity.ok()
+					.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileEntry.getName() + "\"")
+					.header(HttpHeaders.CONTENT_TYPE, "application/octet-stream")
+					.body(file);
 		}
 		return null;
 	}
