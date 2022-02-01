@@ -1,5 +1,7 @@
 package com.robin.robinwebsite;
 
+import java.io.BufferedReader;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,14 +52,21 @@ public class HomeController {
 	
 	@GetMapping("/api/download/{fid}")
 	@ResponseBody
-	public ResponseEntity<Resource> downloadFile(@PathVariable String fid) {
+	public ResponseEntity<Object> downloadFile(@PathVariable String fid) {
 		FileEntry fileEntry = repository.findById(fid).orElse(null);
 		if (fileEntry != null) {
-			Resource file = storageService.load(fileEntry.getPath());
-			return ResponseEntity.ok()
-					.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileEntry.getName() + "\"")
-					.header(HttpHeaders.CONTENT_TYPE, "application/octet-stream")
-					.body(file);
+			if (fileEntry.isFile()) {
+				Resource file = storageService.load(fileEntry.getPath());
+				return ResponseEntity.ok()
+						.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileEntry.getName() + "\"")
+						.header(HttpHeaders.CONTENT_TYPE, "application/octet-stream")
+						.body(file);
+			} else if (fileEntry.isText()){
+				String text = storageService.read(fileEntry.getPath());
+				return ResponseEntity.ok()
+						.header(HttpHeaders.CONTENT_TYPE, "text/plain")
+						.body(text);
+			}
 		}
 		return null;
 	}
@@ -79,6 +88,16 @@ public class HomeController {
 		//second save to save the change to path
 		repository.save(fileEntry);
 		return fileEntry.getId();
+	}
+	
+	@PostMapping("/api/text")
+	@ResponseBody
+	public String uploadText(@RequestParam("text") String text) {
+		FileEntry textEntry = new FileEntry("Text", false);
+		repository.save(textEntry);
+		textEntry.setPath(this.storageService.store(textEntry.getId(), text));
+		repository.save(textEntry);
+		return textEntry.getId();	
 	}
 	
 	@ExceptionHandler(MaxUploadSizeExceededException.class)

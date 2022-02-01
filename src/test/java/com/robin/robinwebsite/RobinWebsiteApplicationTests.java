@@ -5,9 +5,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class RobinWebsiteApplicationTests {
-
 	@Test
 	void contextLoads() {
+		System.out.println("---Test Start---");
 	}
 
 }

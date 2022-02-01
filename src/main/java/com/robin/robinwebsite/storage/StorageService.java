@@ -11,11 +11,15 @@ public interface StorageService {
 	void init();
 
 	String store(String fid, MultipartFile file);
+	
+	String store(String fid, String text);
 
 	Resource load(String fid);
 
 	void deleteAll();
 
 	void delete(String fid);
+
+	String read(String path);
 
 }

@@ -93,6 +93,15 @@
 						</configuration>
 					</execution>
 					<execution>
+						<id>run watch</id>
+						<goals>
+							<goal>npm</goal>
+						</goals>
+						<configuration>
+							<arguments>run watch</arguments>
+						</configuration>
+					</execution>
+					<execution>
 						<id>webpack build</id>
 						<goals>
 							<goal>webpack</goal>

@@ -7,11 +7,13 @@ import SearchIcon from '@mui/icons-material/Search';
 
 const FINDFILEFAIL = "Sorry. I can't find a file with that code.";
 const FINDFILE = "Awesome! You got the file. Now click and download it:";
+const FINDTEXT = "The text you request is:";
 
 export default function Fileachiever(props) {
 	const [code, setCode] = useState(null);
 	const [fileInfo, setFileInfo] = useState(null);
 	const [result, setResult] = useState(null);
+	const [textFound, setText] = useState(null);
 
 	const [codeErrorMessage, setCodeErrorMessage] = useState(null);
 
@@ -30,6 +32,10 @@ export default function Fileachiever(props) {
 
 	};
 
+	const cleanInfo = () => {
+		setFileInfo(null);
+		setText(null);
+	}	
 	const searchFile = (e) => {
 		e.preventDefault();
 		if (!checkCode(code)) {
@@ -42,12 +48,24 @@ export default function Fileachiever(props) {
 		fetch(`/api/files/${code.toLowerCase()}`, {
 			method: 'GET',
 		}).then(res => {
+			cleanInfo();
 			return res.json().then(json=>{
 				if (!json.name) {
 					setResult(FINDFILEFAIL);
 				} else {
-					setResult(FINDFILE);
-					setFileInfo(json);
+					if (json.type == "File") {
+						setResult(FINDFILE);
+						setFileInfo(json);
+					} else {
+						setResult(FINDTEXT);
+						fetch(`/api/download/${code.toLowerCase()}`, {
+							method: 'GET',
+						}).then(res => {
+							return res.text().then(text=>{
+								setText(text);
+							})
+						})
+					}
 					window.scrollTo({
 						top:e.clientY,
 					});
@@ -123,7 +141,16 @@ export default function Fileachiever(props) {
 				</Typography>
 			</Grid>
 			<Grid item>
-			{fileInfo && <Fileavatar filename={fileInfo.name} link={`api/download/${fileInfo.id}`}/>}
+				{fileInfo && <Fileavatar filename={fileInfo.name} link={`api/download/${fileInfo.id}`}/>}
+				{textFound && <Typography
+					component="div"
+					sx={{
+						m: {xs: 1},
+						fontSize: {xs: "1rem", md: "1.5rem"},
+					}}
+				>
+					{textFound}
+				</Typography>}
       		</Grid>
 		</Grid>
 	);

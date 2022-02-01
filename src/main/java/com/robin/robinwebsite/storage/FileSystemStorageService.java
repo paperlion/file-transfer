@@ -1,6 +1,10 @@
 package com.robin.robinwebsite.storage;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -48,6 +52,26 @@ public class FileSystemStorageService implements StorageService {
 			throw new StorageException("Failed to store file.", e);
 		}
 	}
+	
+	@Override
+	public String store(String fid, String text) {
+		try {
+			Path destinationFile = this.rootLocation.resolve(fid).toAbsolutePath();
+			if (!destinationFile.getParent().equals(this.rootLocation.toAbsolutePath())) {
+				// This is a security check
+				throw new StorageException(
+						"Cannot store file outside current directory.");
+			}
+			File newFile = destinationFile.toFile();
+			BufferedWriter writer = new BufferedWriter(new FileWriter(newFile));
+			writer.write(text);
+			writer.close();
+			return rootLocation.resolve(fid).toString();
+		}
+		catch (IOException e) {
+			throw new StorageException("Failed to store text.", e);
+		}
+	}
 
 	// load a file with given path
 	@Override
@@ -65,6 +89,25 @@ public class FileSystemStorageService implements StorageService {
 			}
 		}
 		catch (MalformedURLException e) {
+			throw new StorageFileNotFoundException("Could not read file: " + file.toString(), e);
+		}
+	}
+	
+	// read file context with given path
+	public String read(String path) {
+		Path file = this.rootLocation.resolveSibling(path);
+		try {
+			File textFile = file.toFile();
+			BufferedReader br = new BufferedReader(new FileReader(textFile));
+			StringBuilder sb = new StringBuilder();
+			String line;
+			while ((line=br.readLine()) != null) {
+				sb.append(line + "\n");
+			}
+			br.close();
+			return sb.toString();
+		}
+		catch (IOException e) {
 			throw new StorageFileNotFoundException("Could not read file: " + file.toString(), e);
 		}
 	}
