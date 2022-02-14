@@ -16,13 +16,15 @@ import { Container } from '@mui/material'
 import Filetransfer from "./pages/Filetransfer"
 import Homepage from "./pages/Homepage"
 import Notfound from "./pages/Notfound"
+import BillSpliter from "./pages/BillSpliter"
 
 function App() {
   return (
   	<BrowserRouter>
 	    <Routes>
 	     	<Route path="/" element={<Homepage />} />
-	     	<Route path="tool" element={<Filetransfer />} />
+	     	<Route path="file" element={<Filetransfer />} />
+	     	<Route path="bill" element={<BillSpliter />} />
 	     	<Route path="*" element={<Notfound status={404}/>}/>
 	    </Routes>
   	</BrowserRouter>

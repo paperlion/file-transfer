@@ -27,9 +27,16 @@ export default function Navbar(props) {
 						<Button
 							sx={{ color: "white"}}
 							size="large"
-							href="/tool"
+							href="/file"
 						>
-							tool
+							file
+						</Button>
+						<Button
+							sx={{ color: "white"}}
+							size="large"
+							href="/bill"
+						>
+							bill
 						</Button>
 					</Box>
 				</Toolbar>

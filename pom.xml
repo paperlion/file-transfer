@@ -15,6 +15,7 @@
 	<description>Home wesite for Robin</description>
 	<properties>
 		<java.version>11</java.version>
+		<project.basedir>${basedir}</project.basedir>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -90,15 +91,6 @@
 						</goals>
 						<configuration>
 							<arguments>install</arguments>
-						</configuration>
-					</execution>
-					<execution>
-						<id>run watch</id>
-						<goals>
-							<goal>npm</goal>
-						</goals>
-						<configuration>
-							<arguments>run watch</arguments>
 						</configuration>
 					</execution>
 					<execution>
