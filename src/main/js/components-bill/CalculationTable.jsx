@@ -52,6 +52,8 @@ export default function CalculationTable(props) {
 			person.total = (1 + tax/100) * person.total;
 		})
 		setPersons(persons);
+		setItems(items);
+		setTax(tax);
 		setValues(newValues);
 	}
 	const addPerson = () => {
@@ -118,7 +120,6 @@ export default function CalculationTable(props) {
 		if (tax == "") {
 			tax = 0;
 		}
-		setTax(tax);
 		calculateValue(persons, items, tax);
 	}
 
@@ -190,7 +191,7 @@ export default function CalculationTable(props) {
 					</TextField>
 				</Grid>
 				<Grid item xs={ITEM_LENGTH}>
-					<TextField label="price" placeholder={"0"} type="number" value={item.price ? item.price.toString() : null} onChange={modifyItemPrice(index)}
+					<TextField label="price" placeholder={"0"} type="number" value={item.price ? item.price.toString() : ""} onChange={modifyItemPrice(index)}
 						InputProps={{startAdornment:<AttachMoneyIcon/>}}>
 					</TextField>
 				</Grid>
