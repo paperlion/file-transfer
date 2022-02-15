@@ -121,7 +121,6 @@ export default function Fileloader(props) {
 
 	return (
 		<Grid container
-			spacing={0}
 			flexDirection={{ xs: "column"}}
 			alignItems="center"
 			justifyContent="center"
