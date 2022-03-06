@@ -73,21 +73,29 @@ export default function About(props){
 						<Link href="https://github.com/facebook/react" underline = "none"> 
 							React.js 
 						</Link> {} from scratch. 
-						As my practicing project, this website doesn't have much function, but have a useful tool 
-						that allows your to transfer files any time and anywhere. It is times-unlimited and totally free.
+						As my practicing project, this website doesn't have much function, but as time goes it will be added
+						more and moreinteresting functions. The first function is a useful tool 
+						that allows you to transfer files any time and anywhere. It is times-unlimited and totally free.
 						Be sure to click {}
-						<Link href="/tool" underline = "none"> 
-							tool 
+						<Link href="/file" underline = "none"> 
+							file
 						</Link>
 						{} and try it. Never upload important files because I made no security measurement, nor 
 						mess with it because it is so weak.
+						<br />
+						I also created a convenient bill spiliter system. Through {}
+						<Link href="/bill" underline = "none"> 
+							this
+						</Link>
+						{} you can quick split a bill into several individuals. It would be helpful if you live together 
+						and spend a lot of time on figuring out how much one should pay.
 						<br/>
-						In the end, thanks to {} 
+						In the end, thanks to Spring's tutorial and {} 
 						<Link href="https://chris-z.netlify.app/" underline = "none">
 							Chris Z.'s
 						</Link>
-						, his website inspires me a lot.
-						It is impossible for a rookie like me to finish a full-stack work without his open-source code.
+						, whose website template inspires me a lot.
+						It is impossible for me to finish a full-stack work without this open-source code.
 					</Typography>
 				</Card>
     		</Grid>

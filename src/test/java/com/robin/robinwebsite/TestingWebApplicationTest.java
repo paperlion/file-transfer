@@ -3,6 +3,7 @@ package com.robin.robinwebsite;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.matchesPattern;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.startsWith;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -36,6 +37,6 @@ public class TestingWebApplicationTest {
 		this.mockMvc.perform(get("/api/download/"+ id)
 				.contentType(MediaType.APPLICATION_FORM_URLENCODED))
 				.andExpect(status().isOk())
-				.andExpect(content().string(is("hello")));
+				.andExpect(content().string(startsWith("hello")));
 	}
 }

@@ -9,6 +9,8 @@ export default function Copyright(props) {
 			direction="column"
 			justifyContent="center"
 			alignItems="center"
+			justifyContent="flex-end"
+			style={{minHeight: '30vh'}}
 			spacing={0}
     	>
     		<Grid item>

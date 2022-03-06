@@ -4,6 +4,7 @@ import { Container } from '@mui/material'
 import Navbar from "../components/Navbar";
 import CalculationTable from "../components-bill/CalculationTable"
 import TableHeader from "../components-bill/TableHeader";
+import Copyright from "../components/Copyright"
 
 export default function BillSpliter(props) {
 
@@ -23,6 +24,7 @@ export default function BillSpliter(props) {
 			<Navbar />
 			<TableHeader/>
 			<CalculationTable />
+			<Copyright />
 		</Container>
 	);
 }

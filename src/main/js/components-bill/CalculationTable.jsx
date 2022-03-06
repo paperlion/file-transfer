@@ -155,8 +155,8 @@ export default function CalculationTable(props) {
 	return (
 		<Grid container
 			direction="column"
-			justifyContent="center"
-			style={{minHeight: '50vh'}}
+			justifyContent="flex-start"
+			style={{minHeight: '80vh'}}
 			spacing={1}
 		>
 			{/*first line*/}
@@ -229,7 +229,7 @@ export default function CalculationTable(props) {
 				</Grid>
 				)}
 				<Grid key="tax" item xs={ITEM_LENGTH}>
-					<TextField label="tax" type="number" value={math.round(tax).toString()} onChange={modifyTax()}
+					<TextField label="tax" placeholder={"0"} type="number" value={tax ? tax.toString() : ""} onChange={modifyTax()}
 						InputProps={{endAdornment: <InputAdornment position="end">%</InputAdornment>}}>
 					</TextField>
 				</Grid>
