@@ -10,7 +10,7 @@ import Navbar from "../components/Navbar";
 const math = require('mathjs')
 
 const startPersons = [{name:"Robin", total:50}, {name:"Jack", total:50}, {name:"", total:0}, {name:"", total:0}]
-const startItems = [{name:"Costoco", price:"100", notPay:[]}, {name:"", price: "", notPay:[]}, {name:"", price:0, notPay:[]},
+const startItems = [{name:"Costoco", price:"100", notPay:[]}, {name:"", price: "", notPay:[]}, {name:"", price:"", notPay:[]},
 					{name:"", price: "", notPay:[]}, {name:"", price: "", notPay:[]}]
 const startValues = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]];
 
