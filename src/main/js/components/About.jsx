@@ -80,14 +80,13 @@ export default function About(props){
 						<Link href="/file" underline = "none"> 
 							file
 						</Link>
-						{} and try it. Never upload important files because I made no security measurement, nor 
-						mess with it because it is so weak.
+						{} and try it.
 						<br />
 						I also created a convenient bill spiliter system. Through {}
 						<Link href="/bill" underline = "none"> 
-							this
+							bill
 						</Link>
-						{} you can quick split a bill into several individuals. It would be helpful if you live together 
+						{} you can quick split a bill between several individuals. It would be helpful if you live together 
 						and spend a lot of time on figuring out how much one should pay.
 						<br/>
 						In the end, thanks to Spring's tutorial and {} 
@@ -95,7 +94,6 @@ export default function About(props){
 							Chris Z.'s
 						</Link>
 						, whose website template inspires me a lot.
-						It is impossible for me to finish a full-stack work without this open-source code.
 					</Typography>
 				</Card>
     		</Grid>

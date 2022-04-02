@@ -10,8 +10,8 @@ import Navbar from "../components/Navbar";
 const math = require('mathjs')
 
 const startPersons = [{name:"Robin", total:50}, {name:"Jack", total:50}, {name:"", total:0}, {name:"", total:0}]
-const startItems = [{name:"Costoco", price:100, notPay:[]}, {name:"", price:0, notPay:[]}, {name:"", price:0, notPay:[]},
-					{name:"", price:0, notPay:[]}, {name:"", price:0, notPay:[]}]
+const startItems = [{name:"Costoco", price:"100", notPay:[]}, {name:"", price: "", notPay:[]}, {name:"", price:0, notPay:[]},
+					{name:"", price: "", notPay:[]}, {name:"", price: "", notPay:[]}]
 const startValues = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]];
 
 const NAME_LENGTH = 1.4
@@ -41,7 +41,7 @@ export default function CalculationTable(props) {
 				if (item.notPay.includes(index)){
 					row.push(0);
 				} else {
-					let priceToPay = parseFloat(item.price)/numbersPay;
+					let priceToPay = parseFloat(item.price ? item.price : 0)/numbersPay;
 					row.push(priceToPay);
 					person.total += priceToPay;
 				}
@@ -82,7 +82,7 @@ export default function CalculationTable(props) {
 	}
 	const addItem = () => {
 		let newItems = [...items];
-		newItems.push({name:"", price:0, notPay:[]});
+		newItems.push({name:"", price: "", notPay:[]});
 		calculateValue(persons, newItems, tax);
 	}
 	const editItem = (index, name, price) => {
@@ -92,10 +92,7 @@ export default function CalculationTable(props) {
 			setItems(newItems);
 		}
 		if (price != null) {
-			if (price == "") {
-				price = 0;
-			}
-			newItems[index].price = parseFloat(price);
+			newItems[index].price = price;
 			calculateValue(persons, newItems, tax);
 		}
 	}
@@ -191,7 +188,7 @@ export default function CalculationTable(props) {
 					</TextField>
 				</Grid>
 				<Grid item xs={ITEM_LENGTH}>
-					<TextField label="price" placeholder={"0"} type="number" value={item.price ? item.price.toString() : ""} onChange={modifyItemPrice(index)}
+					<TextField label="price" placeholder={"0"} type="number" value={item.price} onChange={modifyItemPrice(index)}
 						InputProps={{startAdornment:<AttachMoneyIcon/>}}>
 					</TextField>
 				</Grid>
