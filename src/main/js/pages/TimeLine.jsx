@@ -12,39 +12,47 @@ export default function Homepage(props) {
 
 	const events = [
 		{
+			title : "Arrive",
+			time : "Aug 2021",
+			img : "/images/arrive.png",
+			imgSize : ["280", "210"],
+			text : "Arrive in Philadelphia. Safe and sound."
+		},
+		{
 			title : "Thanksgiving Dinner",
 			time : "Nov 2021",
 			img : "/images/thanksgiving.png",
-			imgSize : ["200", "200"],
-			text : "Enjoy the turkey and the friendship."
+			imgSize : ["280", "210"],
+			text : "Enjoy the turkey and friendship."
 		},
 		{
 			title : "Long Island Trip",
 			time : "Dec 2021",
 			img : "/images/long_island.png",
-			imgSize : ["300", "200"],
+			imgSize : ["280", "210"],
 			text : "Feel wind from the ocean."
 		},
 		{
 			title : "Merry Christmas",
 			time : "Dec 2021",
 			img : "/images/christmas_tree.png",
-			imgSize : ["300", "200"],
-			text : "See big giant christmas tree in the New York downtown. \
-					May be the same tree appear in the <em> Hawkeye </em> ?"
+			imgSize : ["210", "280"],
+			text : <> A big giant christmas tree stands in the New York downtown. 
+					Maybe it's the same tree appear in <em> Hawkeye </em> ? </>
+				
 		},
 		{
 			title : "Dog Keeper",
 			time : "Jan 2022",
-			img : "/images/dog.png",
-			imgSize : ["200", "300"],
+			img : "/images/dog2.png",
+			imgSize : ["210", "280"],
 			text : "Take care of a happy puppy."
 		},
 		{
 			title : "Universal Resort",
 			time : "Mar 2022",
 			img : "/images/universal.png",
-			imgSize : ["200", "300"],
+			imgSize : ["210", "280"],
 			text : "Visit the amazing Universal in Orlando. \
 						The Harry Potter's magic castle is my favourite."
 		},
@@ -78,12 +86,12 @@ export default function Homepage(props) {
 						fontSize: { xs: "1rem" },
 					}}
 				>
-					Recoding the exciting moment
+					Recoding exciting moments
 				</Typography>
 			</header>
 			<ul class="timeline">
 				{events.map((event, index)=> 
-					<TimelineBlock left={(index % 2 == 0) ? "true" : "false"} title={event.title} time={event.time}>
+					<TimelineBlock key={`block-${index}`} left={(index % 2 == 0) ? "true" : "false"} title={event.title} time={event.time}>
 						<img src={event.img} width={event.imgSize[0]} height={event.imgSize[1]}/>
 						<div>
 							{event.text}
