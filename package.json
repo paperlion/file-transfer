@@ -20,28 +20,37 @@
   },
   "homepage": "https://github.com/spring-guides/tut-react-and-spring-data-rest",
   "dependencies": {
-    "@emotion/react": "^11.7.1",
-    "@emotion/styled": "^11.6.0",
-    "@mui/material": "^5.2.6",
-    "@mui/icons-material": "^5.2.5",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-router-dom": "^6.2.0",
-    "rest": "^1.3.1",
-    "sockjs-client": "^1.0.3",
-    "stompjs": "^2.3.3",
-    "typewriter-effect": "^2.18.2",
-    "mathjs": "*"
+    "@emotion/react": "*",
+    "@emotion/styled": "*",
+    "@mui/icons-material": "*",
+    "@mui/material": "*",
+    "mathjs": "*",
+    "react": "*",
+    "react-dom": "*",
+    "react-router-dom": "*",
+    "rest": "*",
+    "sockjs-client": "*",
+    "stompjs": "*",
+    "typewriter-effect": "*"
   },
   "scripts": {
-    "watch": "webpack --watch -d --output ./target/classes/static/built/bundle.js"
+    "watch": "webpack --watch -o ./target/classes/static/built/"
   },
   "devDependencies": {
-    "@babel/core": "^7.1.0",
-    "@babel/preset-env": "^7.1.0",
-    "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.0.2",
-    "webpack": "^4.19.1",
-    "webpack-cli": "^3.1.0"
+    "@babel/core": "*",
+    "@babel/plugin-proposal-decorators": "*",
+    "@babel/preset-env": "*",
+    "@babel/preset-react": "*",
+    "babel-loader": "*",
+    "css-loader": "*",
+    "customize-cra": "*",
+    "image-webpack-loader": "*",
+    "node-sass": "*",
+    "react-app-rewired": "*",
+    "sass-loader": "*",
+    "style-loader": "*",
+    "webpack": "*",
+    "webpack-cli": "*",
+    "file-loader": "*"
   }
 }

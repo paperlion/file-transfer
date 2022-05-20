@@ -27,6 +27,13 @@ export default function Navbar(props) {
 						<Button
 							sx={{ color: "white"}}
 							size="large"
+							href="/timeline"
+						>
+							timeline
+						</Button>
+						<Button
+							sx={{ color: "white"}}
+							size="large"
 							href="/file"
 						>
 							file

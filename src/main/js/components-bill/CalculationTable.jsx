@@ -5,8 +5,6 @@ import ClearIcon from '@mui/icons-material/Clear';
 import AddIcon from '@mui/icons-material/Add';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 
-import Navbar from "../components/Navbar";
-
 const math = require('mathjs')
 
 const startPersons = [{name:"Robin", total:50}, {name:"Jack", total:50}, {name:"", total:0}, {name:"", total:0}]

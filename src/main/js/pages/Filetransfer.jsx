@@ -2,17 +2,17 @@ import React, { useEffect, useState } from "react";
 import { Container } from '@mui/material'
 
 import Navbar from "../components/Navbar";
-import Fileloader from "../components/Fileloader"
-import Fileachiever from "../components/Fileachiever"
+import FileLoader from "../components-file/FileLoader"
+import FileAchiever from "../components-file/FileAchiever"
 import Copyright from "../components/Copyright"
 
 
-export default function Filetransfer(props) {
+export default function FileTransfer(props) {
 	return (
 		<Container disableGutters maxWidth="false" sx={{bgcolor:"#FAFEFF"}}> 
 			<Navbar />
-			<Fileloader />
-			<Fileachiever />
+			<FileLoader />
+			<FileAchiever />
 			<Copyright />
 		</Container>
 	);

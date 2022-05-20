@@ -2,7 +2,7 @@ var path = require('path');
 
 module.exports = {
     entry: './src/main/js/app.js',
-    devtool: 'sourcemaps',
+    devtool: 'eval-source-map',
     cache: true,
 	mode: 'production',
     resolve: {
@@ -12,13 +12,17 @@ module.exports = {
         extensions: ['.js', '.jsx']
     },
     output: {
-        path: __dirname,
-        filename: './src/main/resources/static/built/bundle.js'
+        path: __dirname + '/src/main/resources/static/built/',
+        filename: 'bundle.js'
     },
 	module: {
 		rules: [
 			{
-				test: path.join(__dirname, '.'),
+                test: /\.(css|scss)$/,
+                use: ["style-loader", "css-loader"],
+            },
+			{
+				test: /\.(js|jsx)$/,
 				exclude: /(node_modules)/,
 				use: [{
 					loader: 'babel-loader',
@@ -26,7 +30,16 @@ module.exports = {
 						presets: ["@babel/preset-env", "@babel/preset-react"]
 					}
 				}]
-			}
+			},
+			{
+		        test: /\.(png|jpe?g|gif)$/,
+		        use: [{
+					loader: 'babel-loader',
+					options: {
+						presets: ["@babel/preset-env", "@babel/preset-react"]
+					}
+				}]
+		    },
 		]
-	},
+	}
 };

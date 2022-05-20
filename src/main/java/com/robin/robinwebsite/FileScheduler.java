@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.dao.InvalidDataAccessResourceUsageException;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -36,12 +37,16 @@ public class FileScheduler {
 	
 	@Scheduled(fixedRate = 5000)
 	public void reportCurrentTime() {
-		for (FileEntry e : resposity.findAll()) {
-			if (new Date().getTime() - e.getCreateTime() >= Integer.valueOf(maxtime)) {
-				log.info("Gonna delete " + e.getName());
-				storageService.delete(e.getPath());
-				resposity.delete(e);
-			}
-		}
+	    try {
+    		for (FileEntry e : resposity.findAll()) {
+    			if (new Date().getTime() - e.getCreateTime() >= Integer.valueOf(maxtime)) {
+    				log.info("Gonna delete " + e.getName());
+    				storageService.delete(e.getPath());
+    				resposity.delete(e);
+    			}
+    		}
+	    } catch (InvalidDataAccessResourceUsageException e) {
+	        ;
+	    }
 	}
 }

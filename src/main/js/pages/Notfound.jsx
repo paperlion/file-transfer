@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {Box, Container, Button, Link, Typography, Grid} from "@mui/material";
 
-export default function Filetransfer(props) {
+export default function NotFound(props) {
 	return (
 		<Grid container
 			spacing={0}
