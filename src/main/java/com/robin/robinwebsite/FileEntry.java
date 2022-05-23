@@ -1,70 +1,50 @@
 package com.robin.robinwebsite;
 
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.boot.cfgxml.spi.MappingReference.Type;
+import org.springframework.stereotype.Indexed;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-public class FileEntry {
-	private static String TYPE_FILE = "File";
-	private static String TYPE_TEXT = "Text";
-	private 
-		@Id 
-		@GeneratedValue(generator="IdGenerater")
-		@GenericGenerator(name="IdGenerater", strategy="com.robin.robinwebsite.IdGenerator")
-		String id;
-	private String name;
-	private long createTime;
-	private String path;
-	private String type;
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class FileEntry {  
+	private @Id String id;
 	
-	public FileEntry() {}
+	private String name = null;
+	private long createTime = 0;
+	private String path = null;
+	private FileType type = null;
+
+	private String children = "";
 	
 	public FileEntry(String name) {
+	    this.id = IdGenerator.genrate();
 		this.name = name;
 		this.createTime = new Date().getTime();
-		this.type = TYPE_FILE;
+		this.type = FileType.TYPE_FILE;
 	}
 	
-	public FileEntry(String name, String path) {
-		this.name = name;
-		this.path = path;
-		this.createTime = new Date().getTime();
-		this.type = TYPE_FILE;
-	}
-	
-	public FileEntry(String name, boolean isFile) {
+	public FileEntry(String name, FileType type) {
+	    this.id = IdGenerator.genrate();
 		this.name = name;
 		this.createTime = new Date().getTime();
-		this.type = isFile? TYPE_FILE: TYPE_TEXT;
-	}
-	
-	public String getId() {
-		return id;
-	}
-	
-	public void setId(String id) {
-		this.id = id;
-	}
-	
-	public String getName() {
-		return name;
-	}
-	
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	public long getCreateTime() {
-		return createTime;
-	}
-	
-	public void setPath(String path) {
-		this.path = path;
+		this.type = type;
 	}
 	
 	public String getPath() {
@@ -73,20 +53,13 @@ public class FileEntry {
 		}
 		return path;
 	}
-	
-	public String getType() {
-		return type;
-	}
-	
-	public void setType(String type) {
-		this.type = type;
-	}
+
 	public boolean isFile() {
-		return type == TYPE_FILE;
+	    return type == FileType.TYPE_FILE;
 	}
 	
 	public boolean isText() {
-		return type == TYPE_TEXT;
+	    return type == FileType.TYPE_TEXT;
 	}
 	
 	@Override

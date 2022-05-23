@@ -14,4 +14,8 @@ public class IdGenerator implements IdentifierGenerator{
 		return UUID.randomUUID().toString().substring(0, 4);
 	}
 	
+	static String genrate()
+	{
+	    return UUID.randomUUID().toString().substring(0, 4);
+	}
 }

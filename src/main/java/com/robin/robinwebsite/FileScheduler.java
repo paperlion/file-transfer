@@ -41,7 +41,9 @@ public class FileScheduler {
     		for (FileEntry e : resposity.findAll()) {
     			if (new Date().getTime() - e.getCreateTime() >= Integer.valueOf(maxtime)) {
     				log.info("Gonna delete " + e.getName());
-    				storageService.delete(e.getPath());
+    				if (e.getType() != FileType.TYPE_GROUP) {
+    				    storageService.delete(e.getPath());
+    				}
     				resposity.delete(e);
     			}
     		}

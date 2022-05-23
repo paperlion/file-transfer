@@ -7,6 +7,7 @@ import SearchIcon from '@mui/icons-material/Search';
 
 const FINDFILEFAIL = "Sorry. I can't find a file with that code.";
 const FINDFILE = "Awesome! You got the file. Now click and download it:";
+const FINDFILES = "Awesome! You got some files. Now click and download them:";
 const FINDTEXT = "The text you request is:";
 
 export default function FileAchiever(props) {
@@ -53,10 +54,10 @@ export default function FileAchiever(props) {
 				if (!json.name) {
 					setResult(FINDFILEFAIL);
 				} else {
-					if (json.type == "File") {
+					if (json.type == "TYPE_FILE") {
 						setResult(FINDFILE);
 						setFileInfo(json);
-					} else {
+					} else if (json.type == "TYPE_TEXT") {
 						setResult(FINDTEXT);
 						fetch(`/api/download/${code.toLowerCase()}`, {
 							method: 'GET',
@@ -65,6 +66,9 @@ export default function FileAchiever(props) {
 								setText(text);
 							})
 						})
+					} else if (json.type == "TYPE_GROUP") {
+						let files = str.split(':');
+
 					}
 					window.scrollTo({
 						top:e.clientY,
