@@ -1,6 +1,8 @@
 package com.robin.robinwebsite;
 
 import java.io.BufferedReader;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
@@ -58,8 +60,27 @@ public class HomeController {
 	
 	@GetMapping("/api/files/{fid}")
 	@ResponseBody
-	public FileEntry getFile(@PathVariable String fid) {
-		return repository.findById(fid).orElse(new FileEntry());
+	public ResponseEntity<List<FileEntry>> getFile(@PathVariable String fid) {
+	    FileEntry file = repository.findById(fid).orElse(null);
+	    List<FileEntry> fileList = new ArrayList<>();
+	    if (file == null) {
+	        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(fileList);
+	    } else {
+	        if (file.getType() == FileType.TYPE_GROUP) {
+	            String[] files = file.getChildren().split(":");
+	            for (String child : files) {
+	                if (child != null && !child.equals("null")) {
+	                    FileEntry childEntry = repository.findById(child).orElse(null);
+	                    if (childEntry != null) {
+	                        fileList.add(childEntry);
+	                    }
+	                }
+	            }
+	        } else {
+	            fileList.add(file);
+	        }
+	        return ResponseEntity.ok(fileList);
+	    }
 	}
 	
 	@GetMapping("/api/download/{fid}")
@@ -91,21 +112,36 @@ public class HomeController {
 	
 	@PostMapping("/api/file")
 	@ResponseBody
-	public String uploadFile(@RequestParam("file") MultipartFile file, 
-	        @RequestParam String group,
-	        @RequestParam int index,
-	        @RequestParam int total) {
+	public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file, 
+	        @RequestParam(required=false) String group,
+	        @RequestParam(required=false) String index) {
 		String fileName = file.getOriginalFilename();
 		FileEntry fileEntry = new FileEntry(fileName);
 		fileEntry.setPath(this.storageService.store(fileEntry.getId(), file));
 		//save to save the change to path
 		repository.save(fileEntry);
-		if (group != null && total != 1) {
-		    String ret = this.groupSavingService.addFileToGroup(fileEntry.getId(), group, index, total);
-		    return ret;
+		if (group != null) {
+		    boolean ret = this.groupSavingService.addFileToGroup(fileEntry.getId(), group, Integer.valueOf(index));
+		    if (!ret) {
+		        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Cannot store the file");
+		    }
 		}	
-		return fileEntry.getId();
+		return ResponseEntity.ok(fileEntry.getId());
 	}
+	
+	@GetMapping("/api/file-group")
+    @ResponseBody
+    public ResponseEntity<String> registerFilesGroup(@RequestParam int total) {
+	    if (total >= 2) {
+	        FileEntry groupEntry = new FileEntry("FilesGroup", FileType.TYPE_GROUP);
+	        groupEntry.setChildren(String.join(":", new String[total]));
+	        repository.save(groupEntry);
+	        return ResponseEntity.ok(groupEntry.getId());
+	    } else {
+	        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("A group should have 2 or more files");
+	    }
+        
+    }
 	
 	@PostMapping("/api/text")
 	@ResponseBody

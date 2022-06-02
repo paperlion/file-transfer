@@ -12,7 +12,7 @@ const FINDTEXT = "The text you request is:";
 
 export default function FileAchiever(props) {
 	const [code, setCode] = useState(null);
-	const [fileInfo, setFileInfo] = useState(null);
+	const [filesInfo, setFilesInfo] = useState(null);
 	const [result, setResult] = useState(null);
 	const [textFound, setText] = useState(null);
 
@@ -25,6 +25,8 @@ export default function FileAchiever(props) {
 	};
 
 	const checkCode = (code) => {
+		if (code == null) 
+			return false;
 		if (/^[0-9a-zA-Z]{4}$/.test(code)) {
 			return true;
 		} else {
@@ -34,7 +36,7 @@ export default function FileAchiever(props) {
 	};
 
 	const cleanInfo = () => {
-		setFileInfo(null);
+		setFilesInfo(null);
 		setText(null);
 	}	
 	const searchFile = (e) => {
@@ -45,37 +47,41 @@ export default function FileAchiever(props) {
 		} else {
 			setCodeErrorMessage(null)
 		}
-		setFileInfo(null);
+		setFilesInfo(null);
 		fetch(`/api/files/${code.toLowerCase()}`, {
 			method: 'GET',
 		}).then(res => {
 			cleanInfo();
-			return res.json().then(json=>{
-				if (!json.name) {
-					setResult(FINDFILEFAIL);
-				} else {
-					if (json.type == "TYPE_FILE") {
-						setResult(FINDFILE);
-						setFileInfo(json);
-					} else if (json.type == "TYPE_TEXT") {
-						setResult(FINDTEXT);
-						fetch(`/api/download/${code.toLowerCase()}`, {
-							method: 'GET',
-						}).then(res => {
-							return res.text().then(text=>{
-								setText(text);
-							})
-						})
-					} else if (json.type == "TYPE_GROUP") {
-						let files = str.split(':');
-
-					}
-					window.scrollTo({
-						top:e.clientY,
-					});
-				}
-			});
+			return new Promise((resolve)=>{
+				res.json().then((json)=> resolve(
+				{
+					ok : res.ok,
+					status : res.status.toString(),
+					files : json
+				}))
+			})
 		})
+		.then(({ok, status, files})=>{
+			if (!ok || files.length == 0) {
+				setResult(FINDFILEFAIL);
+			} else if (files.length == 1 && files[0].type == "TYPE_TEXT") {
+				setResult(FINDTEXT);
+				fetch(`/api/download/${code.toLowerCase()}`, {
+					method: 'GET',
+				})
+				.then(res => res.text())
+				.then(text=>{
+					setText(text);
+				})
+			} else {
+				console.log(files)
+				setResult(FINDFILE);
+				setFilesInfo(files);
+			}
+			window.scrollTo({
+				top:e.pageY,
+			});
+		});
 	}
 
 	return (
@@ -144,8 +150,12 @@ export default function FileAchiever(props) {
 					{result}
 				</Typography>
 			</Grid>
-			<Grid item>
-				{fileInfo && <FileAvatar filename={fileInfo.name} link={`api/download/${fileInfo.id}`}/>}
+			<Grid item container alignItems="center" justifyContent="center">
+				{filesInfo && filesInfo.map((fileInfo, index) =>
+					<Grid item xs={2}>
+						<FileAvatar filename={fileInfo.name} link={`api/download/${fileInfo.id}`} key={`file-${index}`}/>
+					</Grid>)
+				}
 				{textFound && <Typography
 					component="div"
 					sx={{

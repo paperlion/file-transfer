@@ -2,11 +2,16 @@ import React, { useEffect, useState } from "react";
 import {Box, Container, Button, Link, Typography, Input, Grid, 
 	TextField, ToggleButton, ToggleButtonGroup, TextareaAutosize} from "@mui/material";
 
+import FileAvatar from "./FileAvatar"
+
 const WELCOME = "Welcome to Robin's Fast File Transfer!"
-const SUBTITLE = "upload and achieve files/text everywhere with 4-character code."
+const SUBTITLE = "Upload and achieve files/text everywhere with 4-character code."
 
 const UPLOADSUCCESS = "Upload Sucess. Your Code Is:";
-const SUBUPLOADSUCCESS = "(files/text will be kept for 60 minutes)";
+const UPLOADFAILED = "Upload Failed. Error Status Code is:";
+const UPLOADPARTSUCCESS = "Parts Of Files Uploaded Successfully. Your Code Is:";
+const SUBUPLOADSUCCESS = "(Files/text will be kept for 60 minutes)";
+const SUBUPLOADFAILED = "Please check you don't upload a directory or a too large file, then try again.";
 
 const FILE = 0;
 const TEXT = 1;
@@ -56,65 +61,192 @@ export default function FileLoader(props) {
 				return;
 			}
 
-			let groupId = Math.random().toString(36).substr(2, 9);
-			let resultRecord = new Array(currFiles.length);
+			// let groupId = Math.random().toString(36).substr(2, 9);
 
-			currFiles.map((currFile, index)=>{
+			if (currFiles.length == 1) {
 				let data = new FormData();
-				data.append('file', currFile)
-				data.append('group', groupId)
-				data.append('index', index)
-				data.append('total', currFiles.length)
+				data.append('file', currFiles[0]);
 				fetch('/api/file', {
 					method: 'POST',
 					body: data
-				}).then(res => {
-					return res.text().then(text=>{
-						if (res.ok) {
-							if (text == "Error") {
-								resultRecord[index] = "Unknown Error"
-								console.log("fail " + index)
-							}
-							else {
-								setMessage(UPLOADSUCCESS);
-								setSubMessage(SUBUPLOADSUCCESS);
-								setCode(text);
-								setCurrentFiles([]);
-								window.scrollTo({
-									top: 0,
-								});
-							}
-						} else {
-							//error happens
-							console.error(text);
-							resultRecord[index] = text
-						}
+				})
+				.then(res => {
+					return new Promise((resolve)=>{
+						res.text().then((text)=> resolve(
+						{
+							ok : res.ok,
+							status : res.status.toString(),
+							text
+						}))
+					})
+				})
+				.then(({ok, status, text}) => {
+					if (ok) {
+						setMessage(UPLOADSUCCESS);
+						setSubMessage(SUBUPLOADSUCCESS);
+						setCode(text);
+					}
+					else {
+						setMessage(UPLOADFAILED);
+						setSubMessage(SUBUPLOADFAILED);
+						setCode(status);
+						console.error(text);
+					}
+					setCurrentFiles([]);
+					window.scrollTo({
+						top: 0,
 					});
 				})
-			})
+				.catch(err => {
+					//error happens
+					setMessage(UPLOADFAILED);
+					setSubMessage(SUBUPLOADFAILED);
+					console.error(err);
+					setCode(err);
+					setCurrentFiles([]);
+					window.scrollTo({
+						top: 0,
+					});
+				});
+			}
+			else {
+				const total = currFiles.length;
+				let groupCode = "";
+				fetch(`/api/file-group?total=${total}`, {
+					method: 'GET',
+				})
+				.then(res => {
+					return new Promise((resolve)=>{
+						res.text().then((text)=> resolve(
+						{
+							ok : res.ok,
+							status : res.status.toString(),
+							text
+						}))
+					})
+				})
+				.then(({ok, status, text}) => {
+					if (ok) {
+						groupCode = text;
+						// send all files, the text is the group-code
+						return Promise.all(currFiles.map((currFile, index)=>{
+							let data = new FormData();
+							data.append('file', currFile);
+							data.append('index', index);
+							data.append('group', text);
+							return fetch(`/api/file`, {
+								method : 'POST',
+								body : data
+							})
+							.then(res => {
+								return new Promise((resolve)=>{
+									res.text().then((text)=> resolve(
+									{
+										ok : res.ok,
+										status : res.status.toString(),
+										text
+									}))
+								})
+							})
+							.catch(err => {
+								return {ok:false, status:err, text:err}
+							});
+						}));
+					} else {
+						setMessage(UPLOADFAILED);
+						setSubMessage(SUBUPLOADFAILED);
+						setCode(status);
+						console.error(text);
+						throw "Group Upload failed";
+					}
+				})
+				.then(responses => {
+					let successCount = 0;
+					let errorCode = 0;
+					let errorMessage = "";
+					responses.map((res, index)=>{
+						if (res.ok) {
+							successCount += 1;
+						} else {
+							errorCode = res.status;
+							errorMessage = res.text;
+						}
+					})
+					if (successCount == currFiles.length){
+						setCode(groupCode)
+						setMessage(UPLOADSUCCESS);
+						setSubMessage(SUBUPLOADSUCCESS);
+					} else if (successCount > 0) {
+						setCode(groupCode)
+						setMessage(UPLOADPARTSUCCESS);
+						setSubMessage(SUBUPLOADFAILED);
+						console.error(errorMessage)
+					} else {
+						setMessage(UPLOADFAILED);
+						setSubMessage(SUBUPLOADFAILED);
+						setCode(errorCode);
+						console.error(errorMessage)
+					}
+					setCurrentFiles([]);
+					window.scrollTo({
+						top: 0,
+					});
+				})
+				.catch(err => {
+					setMessage(UPLOADFAILED);
+					setSubMessage(SUBUPLOADFAILED);
+					console.error(err);
+					setCode(err);
+					setCurrentFiles([]);
+					window.scrollTo({
+						top: 0,
+					});
+				});
+			}
 		} else {
 			let data = new FormData()
 			data.append('text', currText)
 			fetch('/api/text', {
 				method: 'POST',
 				body: data
-			}).then(res => {
-				return res.text().then(text=>{
-					if (res.ok) {
-						setMessage(UPLOADSUCCESS);
-						setSubMessage(SUBUPLOADSUCCESS);
-						setCode(text);
-						setCurrText("");
-						document.getElementById('input-text').value="";
-						window.scrollTo({
-							top: 0,
-						});
-					} else {
-						//error happens
-						alert(text);
-					}
-				});
 			})
+			.then(res => {
+				return new Promise((resolve)=>{
+					res.text().then((text)=> resolve(
+					{
+						ok : res.ok,
+						status : res.status.toString(),
+						text
+					}))
+				})
+			})
+			.then(({ok, status, text}) => {
+				if (ok) {
+					setMessage(UPLOADSUCCESS);
+					setSubMessage(SUBUPLOADSUCCESS);
+					setCode(text);
+					setCurrText("");
+					document.getElementById('input-text').value="";
+				} else {
+					setMessage(UPLOADFAILED);
+					setSubMessage(SUBUPLOADFAILED);
+					setCode(status);
+					console.error(text);
+				}
+				window.scrollTo({
+					top: 0,
+				});
+			}) 
+			.catch(err => {
+				setMessage(UPLOADFAILED);
+				setSubMessage(SUBUPLOADFAILED);
+				console.error(err);
+				setCode(err);
+				setCurrentFiles([]);
+				window.scrollTo({
+					top: 0,
+				});
+			});
 		}
 	}
 
@@ -140,21 +272,14 @@ export default function FileLoader(props) {
 				// If dropped items aren't files, reject them
 				if (e.dataTransfer.items[i].kind === 'file') {
 					var file = e.dataTransfer.items[i].getAsFile();
-	        		console.log('... file[' + i + '].name = ' + file.name);
 	        		files = [...files, file]
 				}
 			}
 			addFiles(files)
-	  	} else {
-	    	// Use DataTransfer interface to access the file(s)
-	    	for (var i = 0; i < e.dataTransfer.files.length; i++) {
-	      		console.log('... file[' + i + '].name = ' + e.dataTransfer.files[i].name);
-	    	}
 	  	}
 	}
 
 	const dragOverHandler = (e) => {
-		console.log("drag over")
 		// Prevent default behavior (Prevent file from being opened)
 		e.preventDefault();
 		e.stopPropagation();
@@ -168,16 +293,16 @@ export default function FileLoader(props) {
 
 	const messageShowCurrFile = (currFiles) => {
 		if (currFiles.length > 0) { return (
-			<Typography
-				variant="h2"
-				component="div"
-				sx={{
-					m: {xs: 2},
-					fontSize: {xs: "1rem", md: "1.5rem"},
-				}}
+			<Grid container 
+				flexDirection="row" 
+				alignItems="center"
+				justifyContent="center"
 			>
-				{currFiles.length}
-			</Typography>
+				{currFiles.map((currFile, index) =>
+					<Grid item xs={2}>
+						<FileAvatar filename={currFile.name} key={`upload-file-${index}`}/>
+					</Grid>)}
+			</Grid>
 		)} else { return (
 			<Typography
 				variant="h2"
@@ -187,7 +312,7 @@ export default function FileLoader(props) {
 					fontSize: {xs: "1rem", md: "1.5rem"},
 				}}
 			>
-				Drag files here or click to upload. (max size : 10 MB)
+				Drag files here or click to upload. (max size : 100 MB)
 			</Typography>
 		)}
 	} 
@@ -218,7 +343,7 @@ export default function FileLoader(props) {
 						fontSize: {xs: "2rem", md: "4rem"},
 					}}
 				>
-					{code.toUpperCase()}
+					{code.toString().toUpperCase()}
 				</Typography> 
 			</Grid>}
 			<Grid item>
@@ -250,7 +375,7 @@ export default function FileLoader(props) {
 				maxWidth="false"
 				style={{
 					width : '80vw', 
-					height: '40vh',
+					minHeight: '40vh',
 				}}>
 				{(inputType==FILE) && <Grid item>
 					<div onDrop={dropHandler} onDragOver={dragOverHandler}>
@@ -258,7 +383,7 @@ export default function FileLoader(props) {
 							component="label"
 							style={{
 								width : '80vw', 
-								height: '40vh', 
+								minHeight: '40vh', 
 								borderRadius: 50, 
 								border: "1px dashed grey",
 								textTransform:'none',

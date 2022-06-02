@@ -3,6 +3,8 @@ import {Box, Container, Button, Link, Typography, Grid, TextField, IconButton, A
 
 export default function FileAvatar(props) {
 	const filename = props.filename;
+	const shortenName = filename.length < 13 ? filename : filename.slice(0,10) + "...";
+
 	const link = props.link;
 	const style = props.style ? props.style : {width:"50px", height:"50px"};
 
@@ -28,12 +30,12 @@ export default function FileAvatar(props) {
 			<Grid item>
 				<Typography
 					sx={{
-						mb: {xs: 2},
+						mb: {xs: 1},
 						fontSize: {xs: "1rem", md: "1.5rem"}
 					}}
 				>
 					<a href={link}>
-						{filename}
+						{shortenName}
 					</a>
 				</Typography>
 			</Grid>
