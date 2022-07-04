@@ -1,8 +1,19 @@
 import React, { useEffect, useState } from "react";
 import {Box, Container, Button, Link, Typography, Grid, Card} from "@mui/material";
+import { makeStyles } from "@mui/styles";
 
+const useStyles = makeStyles({
+	cards : {
+        padding: "2rem",
+        width: "80vw",
+        opacity: 0.8,
+      }
+})
 
 export default function About(props){
+
+	const classes = useStyles();
+
 	return (
 		<Grid
 			container
@@ -24,12 +35,7 @@ export default function About(props){
 				>
 					About Me
 				</Typography>
-				<Card
-		          sx={{
-		            padding: "2rem",
-		            width: "80vw",
-		          }}
-		        >
+				<Card className={classes.cards}>
 					<Typography
 						sx={{
 							fontSize: { xs: "1.5rem"},
@@ -54,12 +60,7 @@ export default function About(props){
 				>
 					About This Website
 				</Typography>
-				<Card
-		          sx={{
-		            padding: "2rem",
-		            width: "80vw",
-		          }}
-		        >
+				<Card className={classes.cards}>
 					<Typography
 						sx={{
 							fontSize: { xs: "1.5rem"},
@@ -93,7 +94,7 @@ export default function About(props){
 						<Link href="https://chris-z.netlify.app/" underline = "none">
 							Chris Z.'s
 						</Link>
-						, whose website template inspires me a lot.
+						, whose website inspires me a lot.
 					</Typography>
 				</Card>
     		</Grid>

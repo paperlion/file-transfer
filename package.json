@@ -24,6 +24,7 @@
     "@emotion/styled": "*",
     "@mui/icons-material": "*",
     "@mui/material": "*",
+    "@mui/styles" : "*",
     "mathjs": "*",
     "react": "*",
     "react-dom": "*",

@@ -9,7 +9,7 @@ const paragrah = {
 	shortIntro2 : "I create software. ",
 	interest1 : "good at programming, but don't like it",
 	interest2 : "poor at video games, but do love it",
-	age : "23 year-old ",
+	age : "A 23 year-old ",
 	like : "Programmer, Games Lover, New Tech Seeker and Sometimes Day Dreamer",
 	skill : "Java/Python/JS/C++ Programming, Full-stack Development",
 	goal : "Looking for a job",
@@ -21,53 +21,58 @@ export default function PersonInfo (props) {
 	return (
 		<Grid container 
 			spacing={0}
-			flexDirection={{ xs: "column-reverse", md: "row" }}
+			flexDirection={{ xs: "column", md: "row" }}
 			alignItems="center"
-			justifyContent="space-around"
+			justifyContent="start"
 			style={{height: '100vh'}}
 			id="home"
 		>
-			<Grid item xs={6} >
-				<Grid container
+				<Grid container item xs={6} 
 				    spacing={0}
 					direction="column"
 					alignItems="center"
 					justifyContent="center"
-					spacing={5}
 				>
 					<Grid item>
 						<Avatar
 							alt="Robin Ren"
 							src="/images/selfie.jpeg"
-							sx={{ width: {xs :300, md :400}, height: {xs :300, md :400} }}
+							sx={{ width: 400, height: 400 }}
 						/>
 					</Grid>
 					<Grid item>
 						<Typography
 							sx={{
-								mb: { xs: 2, md: 5 },
-								fontSize: {xs: "1rem", md: "1.5rem"},
+								fontSize: "1.5rem",
 							}}
 							color="primary"
 						>
 							{"renht@seas.upenn.edu"}
 						</Typography>
 					</Grid>
+					<Grid item>
+						<Typography
+							sx={{
+								fontSize: "1.5rem",
+							}}
+							color="primary"
+						>
+							{"(215)921-0870"}
+						</Typography>
+					</Grid>
 				</Grid>
-			</Grid>
 			<Grid item xs={6}>
 				<Grid 
 					container
 					spacing={0}
 					direction="column"
-					
 					justifyContent="center"
 				>
 					<Typography
 						component="div"
 						sx={{
-							mb: { xs: 2, md: 5 },
-							fontSize: { xs: "1.5rem", md: "2rem" },
+							mb: 5 ,
+							fontSize: { xs: "3rem", md: "2rem" },
 						}}
 						color="primary"
 					>
@@ -77,8 +82,8 @@ export default function PersonInfo (props) {
 						variant="h2"
 						component="div"
 						sx={{
-							mb: { xs: 2, md: 5 },
-							fontSize: { xs: "3rem", md: "4rem" },
+							mb: 5 ,
+							fontSize: { xs: "5rem", md: "4rem" },
 						}}
 					>
 						{paragrah.name}
@@ -87,8 +92,9 @@ export default function PersonInfo (props) {
 						variant="h3"
 						component="div"
 						sx={{
-							mb: { xs: 2, md: 5 },
-							fontSize: { xs: "2rem", md: "3rem" },
+							mb: 2,
+							fontSize: { xs: "3.5rem", md: "3rem" },
+							height : {xs : '10vh', md: '5vh'},
 						}}
 						color="primary"
 					>
@@ -105,8 +111,8 @@ export default function PersonInfo (props) {
 						variant="h4"
 						component="div"
 						sx={{
-							mb: { xs: 2, md: 5 },
-							fontSize: { xs: "1.5rem", md: "2rem" },
+							mb: 5,
+							fontSize: { xs: "3rem", md: "2rem" },
 							fontFamily: "Monospace",
 						}}
 					>

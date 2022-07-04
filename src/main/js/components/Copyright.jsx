@@ -16,8 +16,8 @@ export default function Copyright(props) {
     		<Grid item>
 				<Typography
 					sx={{
-						mb: { xs: 2, md: 5 },
-						fontSize: { xs: "1rem"},
+						mb: 5,
+						fontSize: "1rem",
 					}}
 				>
 					©2022 Designed and coded by Haitian Ren. All rights reserved.

@@ -7,7 +7,7 @@ const WELCOME_MESSAGE = "Welcome to use the Bill Spliter!"
 export default function TableHeader(props) {
 	return (
 		<Grid container
-			flexDirection={{ xs: "column"}}
+			flexDirection="column"
 			alignItems="center"
 			justifyContent="center"
 			style={{minHeight: '20vh'}}
@@ -16,7 +16,7 @@ export default function TableHeader(props) {
 			<Grid item>
 				<Typography
 					sx={{
-						fontSize: {xs: "1.5rem", md: "3rem"},
+						fontSize: "3rem",
 					}}
 			  		color="primary"
 			  		align="center"

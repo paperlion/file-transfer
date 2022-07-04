@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {Box, Container, Button, Link, Typography, Grid, TextField, IconButton} from "@mui/material";
+import { makeStyles } from "@mui/styles";
 
 import FileAvatar from "./FileAvatar"
 
@@ -10,13 +11,54 @@ const FINDFILE = "Awesome! You got the file. Now click and download it:";
 const FINDFILES = "Awesome! You got some files. Now click and download them:";
 const FINDTEXT = "The text you request is:";
 
+
+const useStyles = makeStyles(theme=> ({
+	square: {
+		width: '120px',
+		height: '50px',
+		background: theme.palette.primary.main,
+	},
+	triangleRight: {
+		borderTop: '50px solid transparent',
+		borderLeft: '100px solid',
+		borderBottom: '50px solid transparent',
+		borderLeftColor: theme.palette.primary.main,
+	},
+	mergeSquareAndTri: {
+		display: 'flex',
+		direction: 'row',
+		alignItems: 'center',
+		justifyContent: 'center',
+		position : 'absolute',
+		right : '320px',
+		bottom : '-15px'
+	},
+	searchBox : { 
+		position: 'relative',
+		flexGrow : 1, 
+		display: 'flex', 
+		justifyContent: 'center', 
+		mb: 1, 
+	},
+	textInArrow : {
+		fontSize: '1rem',
+		position: 'absolute',
+		left : '15px',
+		bottom : '37px',
+		color : 'white'
+	}
+}));
+
 export default function FileAchiever(props) {
 	const [code, setCode] = useState(null);
 	const [filesInfo, setFilesInfo] = useState(null);
 	const [result, setResult] = useState(null);
 	const [textFound, setText] = useState(null);
+	const [showHelpMessage, setShowHelpMessage] = useState(true)
 
 	const [codeErrorMessage, setCodeErrorMessage] = useState(null);
+
+	const classes = useStyles();
 
 	const changeCode = (e) => {
 		setCode(e.target.value);
@@ -41,17 +83,17 @@ export default function FileAchiever(props) {
 	}	
 	const searchFile = (e) => {
 		e.preventDefault();
+		setShowHelpMessage(false);
+		cleanInfo();
 		if (!checkCode(code)) {
 			setCodeErrorMessage("*code should be of length 4 and includes only digits and albert characters");
 			return;
 		} else {
 			setCodeErrorMessage(null)
 		}
-		setFilesInfo(null);
 		fetch(`/api/files/${code.toLowerCase()}`, {
 			method: 'GET',
 		}).then(res => {
-			cleanInfo();
 			return new Promise((resolve)=>{
 				res.json().then((json)=> resolve(
 				{
@@ -95,8 +137,8 @@ export default function FileAchiever(props) {
 				<Typography
 			  		component="div"
 					sx={{
-						mb: {xs: 1},
-						fontSize: {xs: "1.5rem", md: "3rem"},
+						mb: 1,
+						fontSize: "3rem",
 					}}
 			  		color="primary"
 				>
@@ -104,14 +146,7 @@ export default function FileAchiever(props) {
 				</Typography>
 			</Grid>
 			<Grid item>
-				<Box 
-					sx={{ 
-						flexGrow : 1, 
-						display: 'flex', 
-						justifyContent: 'center', 
-						mb: {xs: 1}, 
-					}}
-				>
+				<Box className={classes.searchBox}>
 					<TextField 
 						id="code" 
 						variant="outlined" 
@@ -125,14 +160,22 @@ export default function FileAchiever(props) {
 					>
 						<SearchIcon/>
 					</IconButton>
+
+					{showHelpMessage && <div className={classes.mergeSquareAndTri}>
+			          	<div className={classes.square}> </div>
+			          	<div className={classes.triangleRight}> </div>
+			          	<Typography className={classes.textInArrow}>
+							Achieve files here!
+						</Typography>
+			        </div>}
 				</Box>
 			</Grid>
 			{codeErrorMessage && <Grid item>
 				<Typography
 					component="div"
 					sx={{
-						mb: {xs: 1},
-						fontSize: {xs: "0.5rem", md: "1rem"},
+						mb: 1,
+						fontSize: "1rem",
 						color: "Red",
 					}}
 				>
@@ -143,8 +186,8 @@ export default function FileAchiever(props) {
 				<Typography
 					component="div"
 					sx={{
-						mb: {xs: 2},
-						fontSize: {xs: "1rem", md: "1.5rem"}
+						mb: 2,
+						fontSize:"1.5rem"
 					}}
 				>
 					{result}
@@ -159,8 +202,8 @@ export default function FileAchiever(props) {
 				{textFound && <Typography
 					component="div"
 					sx={{
-						m: {xs: 1},
-						fontSize: {xs: "1rem", md: "1.5rem"},
+						m: 1,
+						fontSize: "1.5rem",
 					}}
 				>
 					{textFound}

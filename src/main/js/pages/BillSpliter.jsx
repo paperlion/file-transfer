@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import CalculationTable from "../components-bill/CalculationTable"
 import TableHeader from "../components-bill/TableHeader";
 import Copyright from "../components/Copyright"
+import BackgroundImage from "../components/BackgroundImage"
 
 export default function BillSpliter(props) {
 
@@ -20,7 +21,7 @@ export default function BillSpliter(props) {
 	}, []);
 
 	return (
-		<Container disableGutters maxWidth="false" sx={{bgcolor:"#FAFEFF"}}> 
+		<Container disableGutters maxWidth="false"> 
 			<Navbar />
 			<TableHeader/>
 			<CalculationTable />

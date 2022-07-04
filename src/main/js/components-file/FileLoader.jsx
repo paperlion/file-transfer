@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { makeStyles } from "@mui/styles";
 import {Box, Container, Button, Link, Typography, Input, Grid, 
 	TextField, ToggleButton, ToggleButtonGroup, TextareaAutosize} from "@mui/material";
 
@@ -16,6 +17,16 @@ const SUBUPLOADFAILED = "Please check you don't upload a directory or a too larg
 const FILE = 0;
 const TEXT = 1;
 
+const useStyles = makeStyles({
+	uploadButton : {
+		width : '80vw', 
+		minHeight: '40vh', 
+		borderRadius: 50, 
+		border: "1px dashed grey",
+		textTransform:'none',
+	}
+})
+
 export default function FileLoader(props) {
 	const [message, setMessage] = useState(WELCOME);
 	const [subMessage, setSubMessage] = useState(SUBTITLE);
@@ -25,6 +36,8 @@ export default function FileLoader(props) {
 	const [inputType, setInputType] = useState(FILE);
 
 	const [currText, setCurrText] = useState(null);
+
+	const classes = useStyles();
 
 	const addFile = (file) => {
 		setCurrentFiles([...currFiles, file]);
@@ -309,7 +322,7 @@ export default function FileLoader(props) {
 				component="div"
 				sx={{
 					m: {xs: 2},
-					fontSize: {xs: "1rem", md: "1.5rem"},
+					fontSize: {xs: "1.8rem", md: "2.5rem"},
 				}}
 			>
 				Drag files here or click to upload. (max size : 100 MB)
@@ -329,7 +342,7 @@ export default function FileLoader(props) {
 				<Typography
 			  		component="div"
 					sx={{
-						fontSize: {xs: "1.5rem", md: "3rem"},
+						fontSize: "3rem",
 					}}
 			  		color="primary"
 				>
@@ -340,7 +353,7 @@ export default function FileLoader(props) {
 				<Typography
 					component="div"
 					sx={{
-						fontSize: {xs: "2rem", md: "4rem"},
+						fontSize: "4rem",
 					}}
 				>
 					{code.toString().toUpperCase()}
@@ -350,8 +363,8 @@ export default function FileLoader(props) {
 				<Typography
 					component="div"
 					sx={{
-						m: {xs: 1},
-						fontSize: {xs: "1rem", md: "1.5rem"},
+						m: 1,
+						fontSize: "1.5rem",
 					}}
 				>
 					{subMessage}
@@ -380,14 +393,8 @@ export default function FileLoader(props) {
 				{(inputType==FILE) && <Grid item>
 					<div onDrop={dropHandler} onDragOver={dragOverHandler}>
 						<Button
-							component="label"
-							style={{
-								width : '80vw', 
-								minHeight: '40vh', 
-								borderRadius: 50, 
-								border: "1px dashed grey",
-								textTransform:'none',
-								}}
+							component="label" 
+							className={classes.uploadButton}
 						>
 							<input
 								id="input-file"

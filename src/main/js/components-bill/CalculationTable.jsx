@@ -3,18 +3,57 @@ import {Box, Container, Button, Link, Typography, Input, Grid,
 	TextField, ToggleButton, ToggleButtonGroup, TextareaAutosize, IconButton, InputAdornment} from "@mui/material";
 import ClearIcon from '@mui/icons-material/Clear';
 import AddIcon from '@mui/icons-material/Add';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import {makeStyles} from '@mui/styles'
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const math = require('mathjs')
 
 const startPersons = [{name:"Robin", total:50}, {name:"Jack", total:50}, {name:"", total:0}, {name:"", total:0}]
-const startItems = [{name:"Costoco", price:"100", notPay:[]}, {name:"", price: "", notPay:[]}, {name:"", price:"", notPay:[]},
+const startItems = [{name:"Apples", price:"10", notPay:[]}, {name:"", price: "", notPay:[]}, {name:"", price:"", notPay:[]},
 					{name:"", price: "", notPay:[]}, {name:"", price: "", notPay:[]}]
 const startValues = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]];
 
-const NAME_LENGTH = 1.4
+const NAME_LENGTH = 1.26
 const ITEM_LENGTH = 1.2
 const HEAD_LENGTH = NAME_LENGTH + ITEM_LENGTH
+
+const useStyles = makeStyles(theme => ({
+	tableHead : {
+		position: 'relative',
+		width: 0,
+		height: 0,
+		borderLeft: '10vw solid',
+		borderTop: '3vh solid',
+		borderBottom: '3vh solid',
+		borderRight: '10vw solid',
+		borderLeftColor: theme.palette.primary.main,
+		borderTopColor: theme.palette.primary.light,
+		borderBottomColor: theme.palette.primary.main,
+		borderRightColor: theme.palette.primary.light,
+	},
+	textLeft : {
+		position : "absolute",
+		right : '3.5vw',
+		top: '-1vh',
+		fontSize : '1.2rem',
+		color : 'white',
+	},
+	textRight : {
+		position : "absolute",
+		left : '4vw',
+		bottom : '-1vh',
+		fontSize : '1.2rem',
+		color : 'white',
+	},
+	personGrid : {
+		display : 'flex',
+		flexDirection : 'column',
+		alignItems : 'center',
+		justifyContent : 'center',
+	}
+}));
 
 export default function CalculationTable(props) {
 
@@ -22,6 +61,10 @@ export default function CalculationTable(props) {
 	const [items, setItems] = useState(startItems);
 	const [tax, setTax] = useState(0);
 	const [values, setValues] = useState(startValues);
+
+	const smallScreen = useMediaQuery(theme => theme.breakpoints.down('md'));
+
+	const classes = useStyles();
 
 	useEffect(() => {
     	calculateValue(persons, items, tax);
@@ -158,16 +201,16 @@ export default function CalculationTable(props) {
 			<Grid container item justifyContent="center" spacing={1}>
 				{/*tab*/}
 				<Grid item key="head" xs={HEAD_LENGTH}>
-					<Typography
-						align="center"
-				  		sx={{fontSize: "2rem",color:"black"}}
-					>
-				  		Items\Users
-					</Typography>
+					<div className={classes.tableHead}>
+						<Typography className={classes.textLeft}> Items </Typography>
+						<Typography className={classes.textRight}> Users </Typography>
+					</div>
 				</Grid>
-				{persons.map((person, index) => <Grid item key={`person-${index}`} xs={ITEM_LENGTH}>
+				{persons.map((person, index) => <Grid item key={`person-${index}`} xs={ITEM_LENGTH} className={classes.personGrid}>
+					{smallScreen && <AccountCircleOutlinedIcon color="primary" sx={{fontSize :'3rem'}} />}
 					<TextField placeholder={`User ${index}`} value={person.name} onChange={modifyPersonName(index)}
-						InputProps={{endAdornment: <IconButton onClick={clickRemovePerson(index)}><ClearIcon/></IconButton>}}>
+						InputProps={{startAdornment: smallScreen ? null : <AccountCircleOutlinedIcon/>, 
+							endAdornment: <IconButton onClick={clickRemovePerson(index)}><ClearIcon/></IconButton>}}>
 					</TextField>
 				</Grid>
 				)}

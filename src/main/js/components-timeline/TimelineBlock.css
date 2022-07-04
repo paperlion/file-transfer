@@ -5,17 +5,6 @@ body{
   color: #333;
 }
 
-header h1{
-  text-align: center;
-  font-weight: bold;
-  margin-top: 0;
-}
-  
- header p{
-   text-align: center;
-   margin-bottom: 0;
- }
-
 .hexa{
   border: 0px;
   float: left;
@@ -190,10 +179,10 @@ header h1{
   position: relative;
   margin: 1em 0 0 0;
   padding: 1em;
-  background: rgb(254,254,254);
+  /*background: rgb(254,254,254);
   -webkit-box-shadow: 0 0 1px rgba(0,0,0,0.20);
   -moz-box-shadow: 0 0 1px rgba(0,0,0,0.20);
-  box-shadow: 0 0 1px rgba(0,0,0,0.20);
+  box-shadow: 0 0 1px rgba(0,0,0,0.20);*/
   z-index: 15;
 }
 
